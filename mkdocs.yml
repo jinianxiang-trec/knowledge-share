@@ -34,7 +34,7 @@ plugins:
   - roamlinks
 
 nav:
-  - 首页: _MOC 共享知识库.md
+  - 首页: index.md
 
   - AI 驱动开发:
     - 概览: AI 驱动开发/_MOC AI 驱动开发.md
