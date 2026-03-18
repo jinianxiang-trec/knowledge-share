@@ -20,7 +20,7 @@ AI 编码工具的使用心得与知识库管理实践。
 
 ## Antigravity（Google）
 
-- [[Antigravity/Antigravity + 规格开发|Antigravity + 规格开发]]
+- [[Antigravity/Antigravity 规格开发|Antigravity + 规格开发]]
 - [[Antigravity/官方文档|官方文档]]
 
 ---
