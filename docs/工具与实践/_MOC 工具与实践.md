@@ -39,10 +39,10 @@ AI 编码工具的使用心得与知识库管理实践。
 
 ## Agent 共通模式
 
-> 可参考：[[../20 - 开发方法论/Harness-Engineering/Harness-Engineering 工程技术：在智能体优先的世界中利用 Codex|Harness Engineering]]
+> 可参考：[[../开发方法论/Harness-Engineering/Harness-Engineering 工程技术：在智能体优先的世界中利用 Codex|Harness Engineering]]
 
 ---
 
 ## 关联主题
-- [[../10 - AI 驱动开发/_MOC AI 驱动开发|🤖 AI 驱动开发]]
-- [[../20 - 开发方法论/_MOC 开发方法论|⚙️ 开发方法论]]
+- [[../AI 驱动开发/_MOC AI 驱动开发|🤖 AI 驱动开发]]
+- [[../开发方法论/_MOC 开发方法论|⚙️ 开发方法论]]
