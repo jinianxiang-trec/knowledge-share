@@ -12,7 +12,7 @@ tags:
 
 答案是：**把“规范”变成事实来源，让 AI 依据规范稳定生成代码，并用系统化的校验把质量守住。**
 
-![](03%20-%20开发方法论/SDD/_resources/规范驱动开发SDD完整指南/img1.jpg)
+![](_resources/规范驱动开发SDD完整指南/img1.jpg)
 
 > _以下内容译自《Spec-Driven Development in 2025: The Complete Guide to Using AI to Write Production Code》_
 

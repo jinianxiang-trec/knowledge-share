@@ -56,13 +56,13 @@ tags:
 
 例如，我们令应用程序可以根据 git worktree 启动，因此 Codex 可以为每次更改启动并驱动一个实例。我们还将 Chrome DevTools 协议接入智能体运行时，并创建了用于处理 DOM 快照、屏幕截图和导航的技能。这使 Codex 能够复现错误、验证修复，并直接推理 UI 的行为。
 
-![Codex 使用 Chrome DevTools 驱动应用程序](03%20-%20开发方法论/SDD/_resources/Harness-Engineering/codex-chrome-devtools.webp)
+![Codex 使用 Chrome DevTools 驱动应用程序](_resources/Harness-Engineering/codex-chrome-devtools.webp)
 
 题为“Codex 使用 Chrome DevTools MCP 驱动应用程序以验证其工作”的图表。Codex 会选择一个目标，对触发用户界面路径前后的状态进行快照，通过 Chrome DevTools 观察运行时事件，应用修复、重启和循环重新运行验证，直到应用程序恢复正常。
 
 我们对可观测性工具也做了同样的处理。日志、指标和追踪记录会通过一个本地可观测性堆栈展示给 Codex，对任何给定的工作树来说，该堆栈都是临时的。Codex 在该应用程序的一个完全独立的版本上运行，一旦任务完成，该版本的所有内容，包括日志和指标，都会被删除。智能体可以使用 LogQL 查询日志，使用 PromQL 查询指标。有了这些情境，像“确保服务启动在 800ms 内完成”或“这四个关键用户旅程中的任何跨度都不得超过两秒”这样的提示就变得可行了。
 
-![赋予 Codex 完整的可观察性堆栈](03%20-%20开发方法论/SDD/_resources/Harness-Engineering/codex-observability.webp)
+![赋予 Codex 完整的可观察性堆栈](_resources/Harness-Engineering/codex-observability.webp)
 
 题为“在本地开发中赋予 Codex 完整的可观察性堆栈”的图表。一个应用程序将日志、指标和追踪数据发送到 Vector，Vector 会将数据分发到一个包含 Victoria Logs、Metrics 和 Traces 的可观测性堆栈中，并通过 LogQL、PromQL 或 TraceQL API 进行查询。Codex 使用这些信号进行查询、关联和推理，然后在代码库中进行修复，重启应用程序，重新运行工作负载，测试 UI 流程，并在反馈循环中重复此过程。
 
@@ -105,7 +105,7 @@ tags:
 
 从智能体的角度来看，它在运行时无法在情境中访问的任何内容都是不存在的。存储在 Google Docs、聊天记录或人们头脑中的知识都无法被系统访问。代码仓库本地的、已版本化的工件（例如，代码、Markdown、模式、可执行计划）就是它所能看到的全部。
 
-![智能体知识的局限性](03%20-%20开发方法论/SDD/_resources/Harness-Engineering/agent-knowledge-limits.webp)
+![智能体知识的局限性](_resources/Harness-Engineering/agent-knowledge-limits.webp)
 
 题为“智能体知识的局限性：Codex看不到的东西就不存在”的图表。Codex 的知识被展示为一个有边界的气泡。在其下方是不可见知识的示例 — Google Docs、Slack 消息，以及隐性的人类知识。箭头表示，要想让 Codex 看到这些信息，就必须将其以 Markdown 的形式编码到代码库中。
 
@@ -125,7 +125,7 @@ tags:
 
 下图展示了规则：在每个业务领域内（例如应用设置），代码只能“向前”依赖于一组固定的层（Types → Config → Repo → Service → Runtime → UI）。横切关注点（认证、连接器、遥测、功能标志）通过一个单一的显式接口进入：Providers。其他任何内容都不被允许，并将通过自动化方式强制执行。
 
-![分层领域架构](03%20-%20开发方法论/SDD/_resources/Harness-Engineering/layered-architecture.webp)
+![分层领域架构](_resources/Harness-Engineering/layered-architecture.webp)
 
 题为“具有明确交叉界限的分层领域架构”的图表。在业务逻辑域内存在以下模块：Types → Config → Repo，以及 Providers → Service → Runtime → UI，底部是 App Wiring + UI。一个 Utils 模块位于界限之外，并向 Providers 提供输入。
 

@@ -17,7 +17,7 @@ tags:
 
 本文从技术开发者视角深入剖析 AI 编程范式的演进历程，从最早的代码补全工具，到 Chat 编程、Agent 编程，再到最新的 Vibe Coding 和 Spec Coding。通过实际案例和原理解析，帮助开发者理解每种范式的适用场景，并提供工具选型和最佳实践指导，让大家在不同开发场景下选择合适的 AI 编程方式。
 
-![AI编程范式演进总览](02%20-%20AI%20驱动开发/_resources/AI%20编程范式演进/overview.png)
+![AI编程范式演进总览](_resources/AI%20编程范式演进/overview.png)
 
 还记得最早使用 Copilot 时候，已经非常惊艳了，代码补全，选中代码可以进行问答解释。到现在整个 Coding 过程已经离不开 Claude Code、Codex 等，甚至说已经离不开 AI。我们写代码的方式这 5 年一直在改变。代码补全时代的惊艳，到 Chat 编程，再到现在的 Vibe Coding 和 Spec Coding，每一次演进都在重新定义"编程"这件事。
 
@@ -132,7 +132,7 @@ Cursor 的最佳实践文档里提到了几个关键点：
 - 开发者基本不碰代码
 - 只通过运行结果来评估
 
-![Vibe Coding 示意图](02%20-%20AI%20驱动开发/_resources/AI%20编程范式演进/vibe-coding.png)
+![Vibe Coding 示意图](_resources/AI%20编程范式演进/vibe-coding.png)
 
 比如你对 AI 说："做一个动态的、有音乐反应的视觉体验，要很有艺术感。"
 
@@ -197,7 +197,7 @@ Martin Fowler 把 Spec Coding 分成三个级别：
 - 只有规范被人类编辑
 - 人类完全不碰代码
 
-![Spec Coding 三层级](02%20-%20AI%20驱动开发/_resources/AI%20编程范式演进/spec-coding.png)
+![Spec Coding 三层级](_resources/AI%20编程范式演进/spec-coding.png)
 
 举个具体例子，假设你要加一个用户注册功能：
 

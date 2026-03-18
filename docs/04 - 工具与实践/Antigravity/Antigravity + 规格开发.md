@@ -19,6 +19,6 @@ _account_circle_Haren Bhandari 编写
 - 了解规范驱动开发的基础知识
 - 了解如何在 [Cloud Run](https://cloud.google.com/run?hl=zh-cn) 中轻松部署应用。
 
-![antigravity-spec-dev.png|389](04%20-%20工具与实践/Antigravity/_resources/antigravity-spec-dev.png)
+![antigravity-spec-dev.png|389](_resources/antigravity-spec-dev.png)
 
 图 1：Antigravity 是 Google 开发的以智能体为主的开发工具。
