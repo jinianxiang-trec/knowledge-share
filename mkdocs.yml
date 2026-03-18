@@ -66,6 +66,14 @@ nav:
 
   - 工具与实践:
     - 概览: "04 - 工具与实践/_MOC 工具与实践.md"
+    - Claude Code:
+      - "Claude Code Skills": "04 - 工具与实践/Claude Code/Claude Code Skills：让 AI 变身专业工匠.md"
+      - "官方文档": "04 - 工具与实践/Claude Code/官方文档.md"
+    - Antigravity:
+      - "Antigravity 规格开发": "04 - 工具与实践/Antigravity/Antigravity 规格开发.md"
+      - "官方文档": "04 - 工具与实践/Antigravity/官方文档.md"
+    - Codex:
+      - "官方文档": "04 - 工具与实践/Codex/官方文档.md"
 
 markdown_extensions:
   - admonition
