@@ -21,7 +21,7 @@ AI 时代的工程化方法——如何让 AI 协作更可控、更可靠。
 - [[SDD/SDD 规格驱动开发_PPT分享|SDD 规格驱动开发_PPT分享]] — 团队分享演示文稿
 
 **参考资料**
-- [[AI 编程范式演进：从代码补全到 Vibe Coding、Spec Coding|AI 编程范式演进]] — 编程范式全谱系梳理
+- [[../02 - AI 驱动开发/AI 编程范式演进：从代码补全到 Vibe Coding、Spec Coding|AI 编程范式演进]] — 编程范式全谱系梳理
 - [[SDD/Vibe Coding已经是过去式了：Spec Driven Development（SDD） 指南|Vibe Coding 已是过去式：SDD 指南]]
 - [[SDD/从 Vibe Coding 到 Spec-Driven：AI 原生开发的五个觉醒|AI 原生开发的五个觉醒]]
 - [[SDD/从 Vibe Coding 到 Spec-Driven：一个程序员与 AI 协作两年的思考与破局|程序员与 AI 协作两年的思考与破局]]
@@ -36,7 +36,8 @@ AI 时代的工程化方法——如何让 AI 协作更可控、更可靠。
 
 > 在智能体优先的世界中，如何设计工程环境来驾驭 AI。
 
-- [[Harness-Engineering/Harness-Engineering 工程技术：在智能体优先的世界中利用 Codex|在智能体优先的世界中利用 Codex]] *(OpenAI)*
+- [[SDD/Harness-Engineering 工程技术：在智能体优先的世界中利用 Codex|在智能体优先的世界中利用 Codex]] *(OpenAI · 中文翻译)*
+- [[Harness-Engineering/agent-harness-engineering|Agent Harness Engineering]] *(日文笔记)*
 
 ---
 
@@ -56,5 +57,5 @@ Vibe Coding 的问题 → SDD 是什么 → EARS 语法实践
 ---
 
 ## 关联主题
-- [[../AI 驱动开发/_MOC AI 驱动开发|🤖 AI 驱动开发]]
-- [[../工具与实践/_MOC 工具与实践|🛠️ 工具与实践]]
+- [[../02 - AI 驱动开发/_MOC AI 驱动开发|🤖 AI 驱动开发]]
+- [[../04 - 工具与实践/_MOC 工具与实践|🛠️ 工具与实践]]

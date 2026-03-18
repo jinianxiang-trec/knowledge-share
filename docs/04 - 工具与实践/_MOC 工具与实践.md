@@ -13,6 +13,7 @@ AI 编码工具的使用心得与知识库管理实践。
 
 ## Claude Code
 
+- [[Claude Code/Claude Code Skills：让 AI 变身专业工匠|Claude Code Skills]] — Skills 功能详解：模块化知识包装
 - [[Claude Code/官方文档|官方文档]]
 
 ---
@@ -39,10 +40,10 @@ AI 编码工具的使用心得与知识库管理实践。
 
 ## Agent 共通模式
 
-> 可参考：[[../开发方法论/Harness-Engineering/Harness-Engineering 工程技术：在智能体优先的世界中利用 Codex|Harness Engineering]]
+> 可参考：[[../03 - 开发方法论/Harness-Engineering/agent-harness-engineering|Harness Engineering]]
 
 ---
 
 ## 关联主题
-- [[../AI 驱动开发/_MOC AI 驱动开发|🤖 AI 驱动开发]]
-- [[../开发方法论/_MOC 开发方法论|⚙️ 开发方法论]]
+- [[../02 - AI 驱动开发/_MOC AI 驱动开发|🤖 AI 驱动开发]]
+- [[../03 - 开发方法论/_MOC 开发方法论|⚙️ 开发方法论]]
