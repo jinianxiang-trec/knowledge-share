@@ -36,24 +36,35 @@ plugins:
 nav:
   - 首页: index.md
 
+  - 行业变化:
+    - "2025 全景回顾 + 2026 趋势预判": "01 - 行业变化/2025AI编程全景回顾+2026趋势预判超越技术视角的产业范式分析.md"
+    - "AI 走到哪儿了：程序员失业倒计时？": "01 - 行业变化/AI走到哪儿了：程序员失业倒计时？.md"
+    - "浅谈 AI 编程的发展和未来": "01 - 行业变化/浅谈 AI 编程的发展和未来.md"
+    - "AI 对软件行业的冲击的思考": "01 - 行业变化/AI对软件行业的冲击的思考.md"
+
   - AI 驱动开发:
-    - 概览: AI 驱动开发/_MOC AI 驱动开发.md
-    - AI Agent 前沿: "AI 驱动开发/AI Agent 驱动开发的最前沿：从基于指令的开发迈向下一步.md"
-    - 文档设计思考: "AI 驱动开发/关于支撑 AI Agent 开发的文档设计的思考.md"
-    - Claude Code Skills: "AI 驱动开发/Claude Code Skills：让 AI 变身专业工匠.md"
+    - 概览: "02 - AI 驱动开发/_MOC AI 驱动开发.md"
+    - "AI Agent 前沿：从指令到多 Agent": "02 - AI 驱动开发/AI Agent 驱动开发的最前沿：从基于指令的开发迈向下一步.md"
+    - "AI 编程范式演进": "02 - AI 驱动开发/AI 编程范式演进：从代码补全到 Vibe Coding、Spec Coding.md"
+    - "2026 开发全链路重构": "02 - AI 驱动开发/AI编程最新范式：2026开发全链路重构，看下你的开发模式是否有代差？.md"
+    - "支撑 AI Agent 的文档设计": "02 - AI 驱动开发/关于支撑 AI Agent 开发的文档设计的思考.md"
 
   - 开发方法论:
-    - 概览: 开发方法论/_MOC 开发方法论.md
+    - 概览: "03 - 开发方法论/_MOC 开发方法论.md"
     - SDD 规格驱动开发:
-      - SDD 入门: "开发方法论/SDD/SDD 规格驱动开发.md"
-      - AI 编程范式演进: "开发方法论/SDD/AI 编程范式演进：从代码补全到 Vibe Coding、Spec Coding.md"
-      - Vibe Coding 到 SDD: "开发方法论/SDD/Vibe Coding已经是过去式了：Spec Driven Development（SDD） 指南.md"
-      - 五个觉醒: "开发方法论/SDD/从 Vibe Coding 到 Spec-Driven：AI 原生开发的五个觉醒.md"
-      - Spec-as-source: "开发方法论/SDD/Spec-as-source 的理想与现实.md"
-      - 两年思考与破局: "开发方法论/SDD/从 Vibe Coding 到 Spec-Driven：一个程序员与 AI 协作两年的思考与破局.md"
+      - "SDD 入门": "03 - 开发方法论/SDD/SDD 规格驱动开发.md"
+      - "Spec-as-source 的理想与现实": "03 - 开发方法论/SDD/Spec-as-source 的理想与现实.md"
+      - "SDD PPT 分享": "03 - 开发方法论/SDD/SDD 规格驱动开发_PPT分享.md"
+      - "Vibe Coding 到 SDD 指南": "03 - 开发方法论/SDD/Vibe Coding已经是过去式了：Spec Driven Development（SDD） 指南.md"
+      - "AI 原生开发的五个觉醒": "03 - 开发方法论/SDD/从 Vibe Coding 到 Spec-Driven：AI 原生开发的五个觉醒.md"
+      - "两年思考与破局": "03 - 开发方法论/SDD/从 Vibe Coding 到 Spec-Driven：一个程序员与 AI 协作两年的思考与破局.md"
+      - "SDD 新范式：落地实践": "03 - 开发方法论/SDD/SDD规范驱动开发新范式：软件工程的未来变革与落地实践.md"
+      - "用 AI 写生产级代码": "03 - 开发方法论/SDD/规范驱动开发（SDD）：用 AI 写生产级代码的完整指南.md"
+    - Harness Engineering:
+      - "在智能体优先的世界中利用 Codex": "03 - 开发方法论/SDD/Harness-Engineering 工程技术：在智能体优先的世界中利用 Codex.md"
 
   - 工具与实践:
-    - 概览: 工具与实践/_MOC 工具与实践.md
+    - 概览: "04 - 工具与实践/_MOC 工具与实践.md"
 
 markdown_extensions:
   - admonition
