@@ -13,6 +13,7 @@ AI 驱动开发、开发方法论、工具与实践的公开知识合集。
 
 ## 知识地图
 
+- [[01 - 行业变化/|📊 行业变化]] — AI 编程产业趋势、S 曲线分析、转型紧迫感
 - [[AI 驱动开发/_MOC AI 驱动开发|🤖 AI 驱动开发]] — Agent 工程、上下文工程、多 Agent 协作
 - [[开发方法论/_MOC 开发方法论|⚙️ 开发方法论]] — SDD、EARS 语法、Harness Engineering
 - [[工具与实践/_MOC 工具与实践|🛠️ 工具与实践]] — Claude Code、Antigravity、Codex
