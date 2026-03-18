@@ -1,0 +1,2460 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI 驱动开发 · 开发方法论 · 工具与实践">
+      
+      
+      
+        <link rel="canonical" href="https://jinianxiang-trec.github.io/knowledge-share/03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/Harness-Engineering/agent-harness-engineering/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Agent harness engineering - 共享知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="共享知识库" class="md-header__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            共享知识库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Agent harness engineering
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-tabs__link">
+          
+  
+  
+  行业变化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-tabs__link">
+          
+  
+  
+  AI 驱动开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-tabs__link">
+          
+  
+  
+  开发方法论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-tabs__link">
+          
+  
+  
+  工具与实践
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="共享知识库" class="md-nav__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    共享知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行业变化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    行业变化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/2025AI%E7%BC%96%E7%A8%8B%E5%85%A8%E6%99%AF%E5%9B%9E%E9%A1%BE%E4%B8%8E2026%E8%B6%8B%E5%8A%BF%E9%A2%84%E5%88%A4%20-%20%E8%B6%85%E8%B6%8A%E6%8A%80%E6%9C%AF%E8%A7%86%E8%A7%92%E7%9A%84%E4%BA%A7%E4%B8%9A%E8%8C%83%E5%BC%8F%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025 全景回顾 + 2026 趋势预判
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/AI%E8%B5%B0%E5%88%B0%E5%93%AA%E5%84%BF%E4%BA%86%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A4%B1%E4%B8%9A%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 走到哪儿了：程序员失业倒计时？
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/%E6%B5%85%E8%B0%88%20AI%20%E7%BC%96%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95%E5%92%8C%E6%9C%AA%E6%9D%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    浅谈 AI 编程的发展和未来
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/AI%E5%AF%B9%E8%BD%AF%E4%BB%B6%E8%A1%8C%E4%B8%9A%E7%9A%84%E5%86%B2%E5%87%BB%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 对软件行业的冲击的思考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20Agent%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%9A%84%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9A%E4%BB%8E%E5%9F%BA%E4%BA%8E%E6%8C%87%E4%BB%A4%E7%9A%84%E5%BC%80%E5%8F%91%E8%BF%88%E5%90%91%E4%B8%8B%E4%B8%80%E6%AD%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Agent 前沿：从指令到多 Agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F%E6%BC%94%E8%BF%9B%EF%BC%9A%E4%BB%8E%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8%E5%88%B0%20Vibe%20Coding%E3%80%81Spec%20Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 编程范式演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%E7%BC%96%E7%A8%8B%E6%9C%80%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A2026%E5%BC%80%E5%8F%91%E5%85%A8%E9%93%BE%E8%B7%AF%E9%87%8D%E6%9E%84%EF%BC%8C%E7%9C%8B%E4%B8%8B%E4%BD%A0%E7%9A%84%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%98%AF%E5%90%A6%E6%9C%89%E4%BB%A3%E5%B7%AE%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026 开发全链路重构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/%E5%85%B3%E4%BA%8E%E6%94%AF%E6%92%91%20AI%20Agent%20%E5%BC%80%E5%8F%91%E7%9A%84%E6%96%87%E6%A1%A3%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    支撑 AI Agent 的文档设计
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发方法论
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发方法论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 规格驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDD 规格驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDD/SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 入门
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDD/Spec-as-source%20%E7%9A%84%E7%90%86%E6%83%B3%E4%B8%8E%E7%8E%B0%E5%AE%9E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-as-source 的理想与现实
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDD/SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91_PPT%E5%88%86%E4%BA%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD PPT 分享
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDD/Vibe%20Coding%E5%B7%B2%E7%BB%8F%E6%98%AF%E8%BF%87%E5%8E%BB%E5%BC%8F%E4%BA%86%EF%BC%9ASpec%20Driven%20Development%EF%BC%88SDD%EF%BC%89%20%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibe Coding 到 SDD 指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDD/%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9AAI%20%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E7%9A%84%E4%BA%94%E4%B8%AA%E8%A7%89%E9%86%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 原生开发的五个觉醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDD/%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%8E%20AI%20%E5%8D%8F%E4%BD%9C%E4%B8%A4%E5%B9%B4%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E7%A0%B4%E5%B1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    两年思考与破局
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDD/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E6%9C%AA%E6%9D%A5%E5%8F%98%E9%9D%A9%E4%B8%8E%E8%90%BD%E5%9C%B0%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 新范式：落地实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDD/%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%EF%BC%88SDD%EF%BC%89%EF%BC%9A%E7%94%A8%20AI%20%E5%86%99%E7%94%9F%E4%BA%A7%E7%BA%A7%E4%BB%A3%E7%A0%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用 AI 写生产级代码
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Harness Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SDD/Harness-Engineering%20%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%EF%BC%9A%E5%9C%A8%E6%99%BA%E8%83%BD%E4%BD%93%E4%BC%98%E5%85%88%E7%9A%84%E4%B8%96%E7%95%8C%E4%B8%AD%E5%88%A9%E7%94%A8%20Codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在智能体优先的世界中利用 Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具与实践
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工具与实践
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Claude Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Claude%20Code/Claude%20Code%20Skills%EF%BC%9A%E8%AE%A9%20AI%20%E5%8F%98%E8%BA%AB%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%8C%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code Skills
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Claude%20Code/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Antigravity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Antigravity/Antigravity%20%E8%A7%84%E6%A0%BC%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity 规格开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Antigravity/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codex
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Codex/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ハーネスエンジニアリングとは
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenAI の発信
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAI の発信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エンジニアの役割の再定義
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アプリケーションの把握可能性 (legibility) を高める
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-of-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リポジトリナレッジを知識基盤 (system of record) として整備する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legibility_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エージェントの把握可能性 (legibility) がゴール
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アーキテクチャとテイストを強制する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スループットがマージ哲学を変えてしまった
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-generated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        「エージェント生成 (agent-generated) 」が真に意味すること
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自律レベルの向上
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エントロピーの増大と GC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        申し送り
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashimoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hashimoto 氏の主張からの深化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#martin-fowlar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Martin Fowlar 氏の反応
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Martin Fowlar 氏の反応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        記事への批判
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ハーネスは将来のサービステンプレートになるか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高い AI 自律性のためには、実行環境側の制約が必要か？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技術スタックとトポロジの数は、限られたものに収束していくか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2aiai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2つの未来：AI以前とAI以後のアプリ保守
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-your-harness-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What’s your harness today?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最後に
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        筆者の意見
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="筆者の意見">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        開発生産性が上がるだけではプロダクトは良くならない
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI は増幅器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リンタやテストに投資する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        振る舞いを定量に寄せる
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小さくはじめる
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI の進化を織り込む
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        さいごに
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Agent harness engineering</h1>
+
+<p>最近、ハーネスエンジニアリングという言葉をよく耳にします。</p>
+<p><a href="https://openai.com/index/harness-engineering/">https://openai.com/index/harness-engineering/</a></p>
+<p><a href="https://blog.langchain.com/improving-deep-agents-with-harness-engineering/">https://blog.langchain.com/improving-deep-agents-with-harness-engineering/</a></p>
+<p><a href="https://x.com/naoya_ito/status/2027223346526708092">https://x.com/naoya_ito/status/2027223346526708092</a></p>
+<p>現時点で自分が見かけたいくつかの記事について、内容と理解を整理しておきます。だいたい OpenAI のやつ 6 割、他 3 割、自分の意見 1 割という感じです。</p>
+<h2 id="_1">ハーネスエンジニアリングとは<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%83%8F%E3%83%BC%E3%83%8D%E3%82%B9%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%A8%E3%81%AF"></a></p>
+<p>ハーネスエンジニアリングという名称を使い始めたのは、自分の観測範囲だと Mitchell Hashimoto 氏のブログに登場するのが最古かなと思います。 （概念自体は前からあったので、誰が言い始めたかは重要ではないですが）</p>
+<p><a href="https://mitchellh.com/writing/my-ai-adoption-journey#step-5-engineer-the-harness">https://mitchellh.com/writing/my-ai-adoption-journey#step-5-engineer-the-harness</a></p>
+<blockquote>
+<p>I don't know if there is a broad industry-accepted term for this yet, but I've grown to calling this "harness engineering." It is the idea that anytime you find an agent makes a mistake, you take the time to engineer a solution such that the agent never makes that mistake again.</p>
+</blockquote>
+<p>エージェントがミスや想定外の振る舞いをした時に、再発防止をするというシンプルなアイデアです。AIにセルフレビューと修正を行わせることで、最初の出力からベストに近いものを出させたいというわけですね。</p>
+<p>Mr. Hashimoto の定義では、2つのやるべきことがあります。</p>
+<ul>
+<li><code>AGENTS.md</code> の改善: エージェントが誤った振る舞いをする場合は、<code>AGENTS.md</code> を更新して再発を防止する。</li>
+<li>ツール整備: スクリーンショット/テストランナーなど、エージェントが使用できる専用のツールを整備する。</li>
+</ul>
+<p>これらを通して、エージェント自身が自らの作業を検証できるようにすることで、より長時間の自律的実行が可能になります。</p>
+<h2 id="openai">OpenAI の発信<a class="headerlink" href="#openai" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#openai-%E3%81%AE%E7%99%BA%E4%BF%A1"></a></p>
+<p>Hashimoto 氏の発信から程なくして、OpenAI がハーネスエンジニアリングについての記事を出しました。 実体験ベースで非常にわかりやすく書かれており、この記事を機に Harness Engineering という言葉が広まった印象があります（ただし本文中に <code>harness</code> という単語はほとんど出てきません笑）。</p>
+<p><a href="https://openai.com/index/harness-engineering/">https://openai.com/index/harness-engineering/</a></p>
+<p>ざっくり3行でまとめるとこんな感じです。</p>
+<ul>
+<li>Codexだけで内部ベータのプロダクトをゼロから作り、社内のデイリーユーザーと社外アルファユーザーに提供している。</li>
+<li>5ヶ月でおおよそ 100 万行を、ゼロからエージェントコーディングのみで作った (no manually-written code)。</li>
+<li>重要なのはコーディングではなくエージェントのための土台作りとレバレッジ。</li>
+</ul>
+<p>以下で OpenAI のやったことと主張をまとめます（自分の解釈が若干入ります）。</p>
+<h3 id="_2">エンジニアの役割の再定義<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%AE%E5%BD%B9%E5%89%B2%E3%81%AE%E5%86%8D%E5%AE%9A%E7%BE%A9"></a></p>
+<p>コーディングタスクが無くなったことで、エンジニアの役割は system, scaffolding, leverage にシフトしたとのこと。</p>
+<p>以下自分の用語解釈です。</p>
+<ul>
+<li>system: 開発全体が安定して回る仕組み。CI/CD、マージゲート、テレメトリ基盤など。</li>
+<li>scaffolding: エージェントのための足場づくり。リポジトリ構造、テンプレ、<code>AGENTS.md</code>、汎用抽象化、サンプル、ツールのスクリプト化など。</li>
+<li>leverage: 人間の労力を AI でいかにスケールさせるか。自動化戦略や速度のためのリスクテイクなど。</li>
+</ul>
+<p>OpenAI チームはこれらを <code>depth-first</code> (深さ優先) で実施したと述べています。さらっと書かれてますが自分は結構重要な思考だと思っていて、</p>
+<ul>
+<li>深さ優先<ul>
+<li>1つのユーザーストーリーを選択し、設計/実装/テストなどをフルで通す</li>
+<li>その過程で生まれた部品や抽象や仕組みを用いて、更に大きなものを作っていく</li>
+</ul>
+</li>
+<li>幅優先<ul>
+<li>色々なユーザーストーリーを浅く作って全体像を完成させる</li>
+<li>並列度が上がるが、部品や抽象や仕組みが揃っていない分、同じところで詰まる</li>
+</ul>
+</li>
+</ul>
+<p>という対比だと解釈しました。幅優先だと初動は速いが、再利用性が低い分長期的にはレバレッジが効きにくいのでエージェント相性が悪いという理解です。</p>
+<p>また、本プロジェクトにおけるエンジニアのシステム関与の大半はプロンプティングであり、レビューと修正のループをエージェント自身に回させるような流れになっています。</p>
+<ol>
+<li>エージェントがローカルでセルフレビュー</li>
+<li>ローカル/クラウドで、別のエージェントがレビュー</li>
+<li>人間・エージェント双方からのフィードバックに返答・修正</li>
+<li>エージェントのレビュアーが満足するまで反復</li>
+</ol>
+<p>このイテレーションの中で必要なコンテキストについても、エージェント自身がツールを使って直接取得できるようにしているようです。 この営みにより、レビューの大部分をエージェント同士で完結させているようです。</p>
+<h3 id="legibility">アプリケーションの把握可能性 (legibility) を高める<a class="headerlink" href="#legibility" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%8A%8A%E6%8F%A1%E5%8F%AF%E8%83%BD%E6%80%A7-legibility-%E3%82%92%E9%AB%98%E3%82%81%E3%82%8B"></a></p>
+<p>実装のスループットが向上したことで人間の QA が律速になったため、エージェント自身に QA 能力を持たせて作業を移譲したと書かれています。</p>
+<p>UI の場合は、</p>
+<ul>
+<li>作業ごとに git worktree を切り、Codex が実際のアプリインスタンスを起動して検証できるようにした</li>
+<li>Chrome DevTools MCP をエージェントの実行環境に埋め込み、アプリの画面を操作できるようにした</li>
+<li>DOM スナップショット、スクショ、画面遷移等をスキル化した</li>
+</ul>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/images/agent-harness-engineering/codex-with-chrome-devtools-mcp.png"><img alt="codex-with-chrome-devtools-mcp" src="../_resources/codex-with-chrome-devtools-mcp.png" /></a></p>
+<p>オブザーバビリティ の場合は、</p>
+<ul>
+<li>git worktree ごとに、エフェメラルなオブザーバビリティスタックも立ち上げる</li>
+<li>Codex は <a href="https://grafana.com/docs/loki/latest/query/">LogQL</a> や <a href="https://prometheus.io/docs/prometheus/latest/querying/basics/">PromQL</a> といったクエリ言語を用いて、調査・改善を行う</li>
+<li>性能や信頼性についての指示が実行可能になる (e.g. 起動が800ms以内で終わることを保証して)</li>
+</ul>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/images/agent-harness-engineering/codex-with-o11y-stac.png"><img alt="codex-with-o11y-stack" src="../_resources/codex-with-o11y-stack.png" /></a></p>
+<p>といった調子で、worktree ごとに隔離されたアプリ+観測データに対して Codex が作業できるようにしていたとのこと。</p>
+<p>ちなみにここでいう <code>legibility</code> とは、「エージェントがシステムの挙動をどれだけ定量的に把握できるか」くらいのニュアンスで使用されているものと思われます。 「可読性」と訳されているのをよく見ますが、<code>readability</code> とは異なる概念なので注意して下さい。本記事では「把握可能性」と表現することとします。</p>
+<h3 id="system-of-record">リポジトリナレッジを知識基盤 (system of record) として整備する<a class="headerlink" href="#system-of-record" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%83%8A%E3%83%AC%E3%83%83%E3%82%B8%E3%82%92%E7%9F%A5%E8%AD%98%E5%9F%BA%E7%9B%A4-system-of-record-%E3%81%A8%E3%81%97%E3%81%A6%E6%95%B4%E5%82%99%E3%81%99%E3%82%8B"></a></p>
+<p>OpenAI チームの、コンテキストマネジメントにおけるトライアンドエラーが書かれています。</p>
+<ul>
+<li>最初は巨大な一つの <code>AGENTS.md</code> を作るアプローチを取ったが、すぐに崩壊した</li>
+<li>コンテキスト圧迫、過学習、重要性の分散、保守困難、自動リント困難...etc</li>
+<li>100 行程度の目次としての <code>AGENTS.md</code> と、知識基盤として構造化された <code>docs/*</code> に分けた</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>AGENTS.md
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ARCHITECTURE.md
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docs/
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── design-docs/
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ├── index.md
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   ├── core-beliefs.md
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   └── ...
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── exec-plans/
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── active/
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   ├── completed/
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   └── tech-debt-tracker.md
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>├── generated/
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   └── db-schema.md
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>├── product-specs/
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   ├── index.md
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   ├── new-user-onboarding.md
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   └── ...
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>├── references/
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│   ├── design-system-reference-llms.txt
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│   ├── nixpacks-llms.txt
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│   ├── uv-llms.txt
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│   └── ...
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>├── DESIGN.md
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>├── FRONTEND.md
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>├── PLANS.md
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>├── PRODUCT_SENSE.md
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>├── QUALITY_SCORE.md
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>├── RELIABILITY.md
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>└── SECURITY.md
+</code></pre></div>
+<p><em><a href="https://openai.com/index/harness-engineering/">In-repository knowledge store layout</a></em></p>
+<p><code>docs/*</code> には、</p>
+<ul>
+<li>設計系: エージェントファーストな <code>core-beliefs.md</code> (=開発手順や設計上の判断軸？) や、verification status (=設計docのドリフト状態？) を含む</li>
+<li>構造系: <a href="https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html">ARCHITECTURE.md</a> のようなドメイン/パッケージ各層のトップレベルメンタルマップ</li>
+<li>品質系: ドメイン/パッケージ各層の品質のスコアリングとトラッキング</li>
+<li>計画系: 一定の規模の<a href="https://developers.openai.com/cookbook/articles/codex_exec_plans">実行計画ドキュメント</a>自体を第一級アーティファクトとして扱い、進捗と意思決定のログを残す。完了/未完了状態と技術負債までを含めてリポジトリにチェックインする。</li>
+</ul>
+<p>のドキュメントを含めており、<code>AGENTS.md</code> などのエンドポイントをインデックスマップとして小さく保つことでコンテキストをマネジメントしているとのこと。 またこれらのドキュメントが危殆化しないよう、専用のリンタ/CI/エージェントでリンク切れやドリフトを検知/修正 PR できるように自動化しているようです。</p>
+<h3 id="legibility_1">エージェントの把握可能性 (legibility) がゴール<a class="headerlink" href="#legibility_1" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E6%8A%8A%E6%8F%A1%E5%8F%AF%E8%83%BD%E6%80%A7-legibility-%E3%81%8C%E3%82%B4%E3%83%BC%E3%83%AB"></a></p>
+<p>AIの把握可能性を確保するために、ひたすらにリポジトリにコンテキストを詰め込み、よりレバレッジを効かせられるようにしたとのこと。</p>
+<ul>
+<li>Google Docs や Slack での議論等は Codex にとっては把握不可能 = 存在しないに等しい</li>
+<li>場合によっては upstream の意図が把握できない外部ライブラリよりも、トレースできる内製化を優先した</li>
+</ul>
+<h3 id="_3">アーキテクチャとテイストを強制する<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%A8%E3%83%86%E3%82%A4%E3%82%B9%E3%83%88%E3%82%92%E5%BC%B7%E5%88%B6%E3%81%99%E3%82%8B"></a></p>
+<p>ここもコンテキストマネジメントの話です。</p>
+<ul>
+<li>エージェントには不変条件を矯正し、実装の細部を管理しない (e.g. <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">境界 (boundaries) でデータをパースすることを強制する</a>が、パースライブラリは指定しない)。</li>
+<li><a href="https://bits.logic.inc/p/ai-is-forcing-us-to-write-good-code">エージェントは厳格な境界 (boundaries) と予測可能な型構造の上で上手く動作する</a> ので、各ビジネスドメインのアーキテクチャ層を固定し、各層の依存の方向性を厳格に制御する。</li>
+<li>これらの制約 (constraints) を専用のリンタとテストで機械的に判定する</li>
+</ul>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/images/agent-harness-engineering/layered-architecture-with-explicit-boundaries.png"><img alt="layered-architecture-with-explicit-boundaries" src="../_resources/layered-architecture.png" /></a></p>
+<p>非常に厳格にレイヤードされた構造になっていますが、曰く、</p>
+<ul>
+<li>普段は後回しにするこの手の設計が、エージェント協業においては事前に満たすべき条件となる。この制約 (constraints) こそが崩壊・ドリフトせずに速度を出すために非常に重要。</li>
+<li>命名規則やファイルサイズ制限、構造化ログ、プラットフォームごとの信頼性要件(<code>platform-specific reliability requirements</code>)。</li>
+<li>例のごとく、この強制のためのカスタムリントとテストを用意している。カスタムなので、エージェントにプロンプトとしてそのまま注入できるようなエラーメッセージが書ける。</li>
+</ul>
+<p>とのこと。カスタムリンターにエージェントフレンドリーなエラーメッセージを実装するのはいいアイデアですね。</p>
+<p>またこの章では、制約 (constraints) が有効な範囲についても言及しています。</p>
+<ul>
+<li>優れた組織構造のように、境界 (boundaries) 付近においては厳格に制約をあたえ、各境界 (boundaries) の内部においては自由を与える。</li>
+<li>エージェントの生成物が人間の好むスタイルになっていない可能性もあるが、動作が正しく、保守可能で把握可能 (legible) であれば気にしない。</li>
+<li>レビューコメント、リファクタPR、バグといって追加のテイストは、ドキュメント化するかリンタに落とし込む。特に、ドキュメントが守られない場合にリンタに昇格させるのがいい。</li>
+</ul>
+<h3 id="_4">スループットがマージ哲学を変えてしまった<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%97%E3%83%83%E3%83%88%E3%81%8C%E3%83%9E%E3%83%BC%E3%82%B8%E5%93%B2%E5%AD%A6%E3%82%92%E5%A4%89%E3%81%88%E3%81%A6%E3%81%97%E3%81%BE%E3%81%A3%E3%81%9F"></a></p>
+<p>エージェントのスループットが向上した結果、多くの開発規範が非生産的になってしまったと述べています。</p>
+<ul>
+<li>マージゲートは最小化され、PRは短命になる。</li>
+<li>フレーキーなテストは、原因究明するよりも再実行で通れば OK とする場合もある。</li>
+<li>エージェントの登場により、実装は安く、修正のための待機は高くなった。</li>
+</ul>
+<p>実装スループットが低い環境では無責任な振る舞いであったことも認めており、損益分岐点が変わったという主張のようです。</p>
+<h3 id="agent-generated">「エージェント生成 (agent-generated) 」が真に意味すること<a class="headerlink" href="#agent-generated" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E7%94%9F%E6%88%90-agent-generated-%E3%81%8C%E7%9C%9F%E3%81%AB%E6%84%8F%E5%91%B3%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"></a></p>
+<p>人間はいままでとは異なる抽象レベルで作業するようになるという主張です。</p>
+<ul>
+<li>エージェントはコード/テスト/CI/リリース/ツール/ドキュメント/設計/ハーネスの評価/レビューと対応/スクリプト/ダッシュボード定義ファイル...を生成</li>
+<li>人間は、ユーザフィードバックを受け入れ条件に変換し、生成物を検証する役割にシフトする</li>
+<li>エージェントが詰まっているときは、ツール/ガイドライン/ドキュメンテーションを整備させて障害を取り除く</li>
+</ul>
+<h3 id="_5">自律レベルの向上<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E8%87%AA%E5%BE%8B%E3%83%AC%E3%83%99%E3%83%AB%E3%81%AE%E5%90%91%E4%B8%8A"></a></p>
+<p>最近はエージェントが一つの新機能を E2E で駆動できるところまで仕上がってきたようで、単一のプロンプトに対して、</p>
+<ul>
+<li>コードベースの現状の検証</li>
+<li>報告されたバグの再現</li>
+<li>バグ再現のビデオキャプチャ</li>
+<li>修正の実装</li>
+<li>アプリケーションを実行し、修正を検証</li>
+<li>バグ修正のビデオキャプチャ</li>
+<li>PR オープン</li>
+<li>エージェントと人間のコメントに対応</li>
+<li>ビルド失敗の検出と修正</li>
+<li>判断が必要な場合のみ人間にエスカレート</li>
+<li>変更のマージ</li>
+</ul>
+<p>をやってくれるらしいです。</p>
+<h3 id="gc">エントロピーの増大と GC<a class="headerlink" href="#gc" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC%E3%81%AE%E5%A2%97%E5%A4%A7%E3%81%A8-gc"></a></p>
+<p>Codex はリポジトリに既にあるパターンを参照して実装していくため、既存に微妙なやつが混ざってるとそのうちドリフトするという、AI駆動の負の側面について言及しています。</p>
+<ul>
+<li>この手の <code>AI Slop</code> (= 低品質な AI 生成を指す) を掃除するために、最初は人力で週 1 日対応していたが、これはスケールしなかった。</li>
+<li>代わりに「ゴールデンプリンシプル (golden principles) 」を定義してリポジトリにチェックインし、機械的にチェックできるようにする。</li>
+<li>例えば「場当たりでヘルパーを作らず、共有パッケージを使う」とか、「型を推測せず、境界で検証するか型のついた SDK を使う」とか。</li>
+<li>これらを定期的にスコアリングするエージェントを走らせ、小さな PR を出して高速にレビューしマージすることで、修正コストの肥大化を防ぐ</li>
+</ul>
+<h3 id="_6">申し送り<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E7%94%B3%E3%81%97%E9%80%81%E3%82%8A"></a></p>
+<p>最後に申し送りとして以下が述べられています。</p>
+<ul>
+<li>ここまでは実ユーザ込みでうまくスケールしているが、長期的に設計の一貫性 (coherence) が維持されるかはわからない。</li>
+<li>どうすれば人間の判断をよりレバレッジ効かせられるかも学習中。</li>
+<li>開発規律の中心はコードがら土台作り (scaffolding) へ移る。ツール・環境・抽象化・FBループの設計が重要。</li>
+</ul>
+<h3 id="hashimoto">Hashimoto 氏の主張からの深化<a class="headerlink" href="#hashimoto" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#hashimoto-%E6%B0%8F%E3%81%AE%E4%B8%BB%E5%BC%B5%E3%81%8B%E3%82%89%E3%81%AE%E6%B7%B1%E5%8C%96"></a></p>
+<p>長くなってしまいましたが、OpenAI チームの共有は、Hashimoto 氏の主張の延長線上にあるものと理解しました。</p>
+<ul>
+<li>Hashimoto 氏が重要視する <code>AGENTS.md</code> の改善とツーリングは OpenAI が主張する scafollding や leverage と矛盾しない</li>
+<li>OpenAI の主張は、<code>docs/*</code> によるナレッジマップの最適化、 <code>leginility</code> 志向、リンターや CI の高度化により、この主張を無理なく深化させている</li>
+</ul>
+<h2 id="martin-fowlar">Martin Fowlar 氏の反応<a class="headerlink" href="#martin-fowlar" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#martin-fowlar-%E6%B0%8F%E3%81%AE%E5%8F%8D%E5%BF%9C"></a></p>
+<p>OpenAI の発信から 1 週間程度たったタイミングで、Martin Fowler 氏がこれに反応しています。 記事に対して名指しで反応するあたり、OpenAI の記事が注目を集めていることが伺えます。</p>
+<p>以下は Martin Fowler 氏の主張です。</p>
+<h3 id="_7">記事への批判<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E8%A8%98%E4%BA%8B%E3%81%B8%E3%81%AE%E6%89%B9%E5%88%A4"></a></p>
+<ul>
+<li>OpenAI チームは、内部品質と保守性にのみ言及しており、プロダクトの機能や振る舞いについての検証が見当たらない。</li>
+<li>OpenAI チームは、コードが AI で保守可能であるということを主張するインセンティブがある。<ul>
+<li>明言してませんが「ポジショントークじゃね？」というニュアンスだと思っています。</li>
+</ul>
+</li>
+</ul>
+<h3 id="_8">ハーネスは将来のサービステンプレートになるか？<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%83%8F%E3%83%BC%E3%83%8D%E3%82%B9%E3%81%AF%E5%B0%86%E6%9D%A5%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%AB%E3%81%AA%E3%82%8B%E3%81%8B"></a></p>
+<ul>
+<li>多くの組織は大抵 2 ~ 3 個の技術スタックしか持たないので、似たような技術スタックのアプリケーションを持つことになる</li>
+<li>現在のゴールデンパスのように、チームは最初に汎用ハーネスを使うようになるかもしれない。</li>
+<li>ハーネスはテンプレート化して共有されうるか。既存のゴールデンパスのようにフォークや同期の難しさがあるかも。</li>
+</ul>
+<h3 id="ai">高い AI 自律性のためには、実行環境側の制約が必要か？<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E9%AB%98%E3%81%84-ai-%E8%87%AA%E5%BE%8B%E6%80%A7%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E3%81%AF%E5%AE%9F%E8%A1%8C%E7%92%B0%E5%A2%83%E5%81%B4%E3%81%AE%E5%88%B6%E7%B4%84%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%8B"></a></p>
+<ul>
+<li>AI コーディングの盛り上がりの中には「LLM があれば実行環境/言語/パターンの制約は無い」という主張があるが、そんなことはないはず。</li>
+<li>実際に、OpenAI の事例でも「解の空間」を狭めているように見える。</li>
+<li>柔軟性の一部を捨てて、プロンプト・構造化ルール・ハーネスに置き換えている。</li>
+</ul>
+<h3 id="_9">技術スタックとトポロジの数は、限られたものに収束していくか？<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E6%8A%80%E8%A1%93%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%81%A8%E3%83%88%E3%83%9D%E3%83%AD%E3%82%B8%E3%81%AE%E6%95%B0%E3%81%AF%E9%99%90%E3%82%89%E3%82%8C%E3%81%9F%E3%82%82%E3%81%AE%E3%81%AB%E5%8F%8E%E6%9D%9F%E3%81%97%E3%81%A6%E3%81%84%E3%81%8F%E3%81%8B"></a></p>
+<ul>
+<li>人間にとって良いものは AI にとっても良いが、好みやスタイルや癖レベルのものは今までよりも重要ではなくなる</li>
+<li>いいハーネスがあったり、AI フレンドリーだったりするフレームワークや SDK を選ぶようになるかもしれない</li>
+<li>これはコードベース構造やトポロジにも当てはまるかもしれない。ハーネス化しやすい構造があるなら、それがデフォルトになるのかも。</li>
+<li>OpenAI の記事を読むと、「リポジトリ構造の厳格さ」「強制するルール」が重要なのはわかるが、それが具体的に何なのかはイメージしづらい。</li>
+<li>AI 熱狂派は、自然言語が新たな抽象化レイヤになると主張しているが、実際はこのようなトポロジが新たな抽象化レイヤになるのかもしれない</li>
+</ul>
+<h3 id="2aiai">2つの未来：AI以前とAI以後のアプリ保守<a class="headerlink" href="#2aiai" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#2%E3%81%A4%E3%81%AE%E6%9C%AA%E6%9D%A5ai%E4%BB%A5%E5%89%8D%E3%81%A8ai%E4%BB%A5%E5%BE%8C%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E4%BF%9D%E5%AE%88"></a></p>
+<ul>
+<li>AI自律性が高まった未来に、どの技術は既存アプリにも適用でき、どの技術は「最初からハーネス前提で作ったアプリ」でないと機能しないのか</li>
+<li>古いコードベースに対しては、ハーネスを後付けする価値があるかを判断する必要がある。エントロピーの大きさ故に、やる価値が無いかもしれない。</li>
+</ul>
+<h3 id="whats-your-harness-today">What’s your harness today?<a class="headerlink" href="#whats-your-harness-today" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#whats-your-harness-today"></a></p>
+<ul>
+<li>OpenAI の 5 ヶ月という時間は、短期成果を狙って気軽に飛び込めるものではない</li>
+<li>しかし今自分にとってのハーネスを考える価値はある<ul>
+<li>pre-commit フック</li>
+<li>カスタムリンタのアイデア</li>
+<li>コードベースに課したい機械的な制約</li>
+<li><a href="https://www.archunit.org/">ArchUnit</a> のようなコードベース構造のテスト</li>
+</ul>
+</li>
+</ul>
+<h3 id="_10">最後に<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E6%9C%80%E5%BE%8C%E3%81%AB"></a></p>
+<ul>
+<li>OpenAI チームのやっていることは、大量のマークダウンをメンテすることではない</li>
+<li>広範なツール、ナレッジベースのキュレーション、コードやリポジトリ設計そのもの</li>
+<li>コード設計はそれ自体が巨大なコンテキストである</li>
+<li>「ハーネス」が「1プロンプトで動くLLMベースのコードレビューエージェント」と大衆に誤解されるまでなら、息を止めていられるだろう</li>
+</ul>
+<p>うーん、ちくちく言葉w 表面的なツールやプロセスに走るだけでは意味がないという主張だと思いますが、 Martin Fowler が言うと重みがあります。</p>
+<h2 id="_11">筆者の意見<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E7%AD%86%E8%80%85%E3%81%AE%E6%84%8F%E8%A6%8B"></a></p>
+<p>Hashimoto 氏、OpenAI、Fowler 氏を含む最近の周辺記事を読んでの、私の意見を書いておきます。</p>
+<h3 id="_12">開発生産性が上がるだけではプロダクトは良くならない<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E9%96%8B%E7%99%BA%E7%94%9F%E7%94%A3%E6%80%A7%E3%81%8C%E4%B8%8A%E3%81%8C%E3%82%8B%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AF%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%83%88%E3%81%AF%E8%89%AF%E3%81%8F%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"></a></p>
+<p>当たり前ですが、開発生産性が上がってもプロダクトが良くなるとは限りません。</p>
+<p>手段が目的化してしまったプロダクトに価値はないので、開発生産性に見合うだけの、高品質なプロダクトアイデアを供給し続ける必要があると考えます。 それが不可能なのであれば、ハーネスエンジニアリングというプロセスの話ではなく、プロダクトの話に力点を置くべきでしょう。</p>
+<h3 id="ai_1">AI は増幅器<a class="headerlink" href="#ai_1" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#ai-%E3%81%AF%E5%A2%97%E5%B9%85%E5%99%A8"></a></p>
+<p>エージェントはプロンプトを強く学習する傾向にあるが故に、<a href="https://circleci.com/blog/dora-ai-amplifier/">AI は使用者の増幅器(アンプ)である</a> という指摘はしばしばなされます。 この原則はハーネスエンジニアリングでも崩れることはないでしょう。</p>
+<p>あるいは自動化も同じでしょう。ゴミを自動化したら自動でゴミが出来ます。</p>
+<p>また、AI が実装を置き換える時代になったことで、我々は具体を学習する機会を失いつつあります。具体を失うということは、そこから得られる抽象的思考を失うことかもしれません。 私たちはこれを重く捉え、時には立ち止まって学習し、自動化レバレッジの元手を増やしていく必要があります。</p>
+<h3 id="_13">リンタやテストに投資する<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%83%AA%E3%83%B3%E3%82%BF%E3%82%84%E3%83%86%E3%82%B9%E3%83%88%E3%81%AB%E6%8A%95%E8%B3%87%E3%81%99%E3%82%8B"></a></p>
+<p>プロンプトは非決定的かつ有限である一方で、リンタやテストは決定的です。</p>
+<p>OpenAI チームが 500 万行という規模でスケールできたのは、非決定的な AI コンテキストの層を薄く保ったことが大きいと考えています。</p>
+<p>リンタやテスト、スクリプトといった周辺環境に投資し、不変条件を定量的に定義できることが、ハーネスエンジニアリング時代により必要な条件になるものと捉えています。</p>
+<h3 id="_14">振る舞いを定量に寄せる<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E6%8C%AF%E3%82%8B%E8%88%9E%E3%81%84%E3%82%92%E5%AE%9A%E9%87%8F%E3%81%AB%E5%AF%84%E3%81%9B%E3%82%8B"></a></p>
+<p>Fowler 氏も指摘されている通り、プロダクトの機能性や振る舞いは非常に重要です。しかし、プロダクトの全ての側面を定量的に計測することは不可能です。</p>
+<p>スコアリングや AI を用いて如何に振る舞いを自動・定量・計測可能に寄せられるかがポイントになるのではないでしょうか。</p>
+<h3 id="_15">小さくはじめる<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E5%B0%8F%E3%81%95%E3%81%8F%E3%81%AF%E3%81%98%E3%82%81%E3%82%8B"></a></p>
+<p>全ての適用し自己改善ループを回すことは難しいかもしれませんが、Fowler 氏が言及しているように、小さなことから部分的に改善できるかもしれません。</p>
+<ul>
+<li>エージェントに <code>gh</code> を渡して、CLI 上で PR の内容をチェックできるようにする</li>
+<li><code>AGENTS.md</code> の一部をカスタムリンタで代替する</li>
+<li>エラー分析をスキル化する</li>
+<li>Chrome Devtools MCP などで UI を AI に解釈させる</li>
+</ul>
+<p>新規 PJ であっても既存 PJ であっても、それぞれの粒度でステップを踏むことができるはずです。</p>
+<h3 id="ai_2">AI の進化を織り込む<a class="headerlink" href="#ai_2" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#ai-%E3%81%AE%E9%80%B2%E5%8C%96%E3%82%92%E7%B9%94%E3%82%8A%E8%BE%BC%E3%82%80"></a></p>
+<p>2024 年には複雑なパイプラインが必要だった機能が、今では単一のプロンプトで動作するようになっています。</p>
+<p>ハーネスや技術スタックに関しても、AI の精度向上を織り込んで、何度も大きくテコ入れをする前提を持っておくべきだと思います。 また、より危殆化しない技術を選定するための審美眼も重要になるでしょう。</p>
+<h2 id="_16">さいごに<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/takymt/articles-hub/blob/main/articles/agent-harness-engineering.md#%E3%81%95%E3%81%84%E3%81%94%E3%81%AB"></a></p>
+<p>以上、現時点でのハーネスエンジニアリングに対する自分の理解でした。</p>
+<p>半年後には自分でこの記事を読んで「わかってないな」と笑うかもしれないなと思いつつ、せっかく書いたので投稿しておきます笑</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2669 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="SDD（规范驱动开发）是解决传统软件工程痛点的创新方法，通过规范即代码、AI自动生成等技术提升开发效率与质量。本文深入分析SDD的核心优势、落地实践及对人才需求的影响，为企业数字化转型提供新思路。">
+      
+      
+      
+        <link rel="canonical" href="https://jinianxiang-trec.github.io/knowledge-share/03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E6%9C%AA%E6%9D%A5%E5%8F%98%E9%9D%A9%E4%B8%8E%E8%90%BD%E5%9C%B0%E5%AE%9E%E8%B7%B5/">
+      
+      
+        <link rel="prev" href="../%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%8E%20AI%20%E5%8D%8F%E4%BD%9C%E4%B8%A4%E5%B9%B4%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E7%A0%B4%E5%B1%80/">
+      
+      
+        <link rel="next" href="../%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%EF%BC%88SDD%EF%BC%89%EF%BC%9A%E7%94%A8%20AI%20%E5%86%99%E7%94%9F%E4%BA%A7%E7%BA%A7%E4%BB%A3%E7%A0%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>SDD规范驱动开发新范式：软件工程的未来变革与落地实践-腾讯云开发者社区-腾讯云 - 共享知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="共享知识库" class="md-header__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            共享知识库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SDD规范驱动开发新范式：软件工程的未来变革与落地实践-腾讯云开发者社区-腾讯云
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-tabs__link">
+          
+  
+  
+  行业变化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-tabs__link">
+          
+  
+  
+  AI 驱动开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-tabs__link">
+          
+  
+  
+  开发方法论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-tabs__link">
+          
+  
+  
+  工具与实践
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="共享知识库" class="md-nav__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    共享知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行业变化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    行业变化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/2025AI%E7%BC%96%E7%A8%8B%E5%85%A8%E6%99%AF%E5%9B%9E%E9%A1%BE%E4%B8%8E2026%E8%B6%8B%E5%8A%BF%E9%A2%84%E5%88%A4%20-%20%E8%B6%85%E8%B6%8A%E6%8A%80%E6%9C%AF%E8%A7%86%E8%A7%92%E7%9A%84%E4%BA%A7%E4%B8%9A%E8%8C%83%E5%BC%8F%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025 全景回顾 + 2026 趋势预判
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/AI%E8%B5%B0%E5%88%B0%E5%93%AA%E5%84%BF%E4%BA%86%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A4%B1%E4%B8%9A%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 走到哪儿了：程序员失业倒计时？
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/%E6%B5%85%E8%B0%88%20AI%20%E7%BC%96%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95%E5%92%8C%E6%9C%AA%E6%9D%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    浅谈 AI 编程的发展和未来
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/AI%E5%AF%B9%E8%BD%AF%E4%BB%B6%E8%A1%8C%E4%B8%9A%E7%9A%84%E5%86%B2%E5%87%BB%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 对软件行业的冲击的思考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20Agent%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%9A%84%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9A%E4%BB%8E%E5%9F%BA%E4%BA%8E%E6%8C%87%E4%BB%A4%E7%9A%84%E5%BC%80%E5%8F%91%E8%BF%88%E5%90%91%E4%B8%8B%E4%B8%80%E6%AD%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Agent 前沿：从指令到多 Agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F%E6%BC%94%E8%BF%9B%EF%BC%9A%E4%BB%8E%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8%E5%88%B0%20Vibe%20Coding%E3%80%81Spec%20Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 编程范式演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%E7%BC%96%E7%A8%8B%E6%9C%80%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A2026%E5%BC%80%E5%8F%91%E5%85%A8%E9%93%BE%E8%B7%AF%E9%87%8D%E6%9E%84%EF%BC%8C%E7%9C%8B%E4%B8%8B%E4%BD%A0%E7%9A%84%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%98%AF%E5%90%A6%E6%9C%89%E4%BB%A3%E5%B7%AE%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026 开发全链路重构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/%E5%85%B3%E4%BA%8E%E6%94%AF%E6%92%91%20AI%20Agent%20%E5%BC%80%E5%8F%91%E7%9A%84%E6%96%87%E6%A1%A3%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    支撑 AI Agent 的文档设计
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发方法论
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发方法论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 规格驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDD 规格驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 入门
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spec-as-source%20%E7%9A%84%E7%90%86%E6%83%B3%E4%B8%8E%E7%8E%B0%E5%AE%9E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-as-source 的理想与现实
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91_PPT%E5%88%86%E4%BA%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD PPT 分享
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vibe%20Coding%E5%B7%B2%E7%BB%8F%E6%98%AF%E8%BF%87%E5%8E%BB%E5%BC%8F%E4%BA%86%EF%BC%9ASpec%20Driven%20Development%EF%BC%88SDD%EF%BC%89%20%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibe Coding 到 SDD 指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9AAI%20%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E7%9A%84%E4%BA%94%E4%B8%AA%E8%A7%89%E9%86%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 原生开发的五个觉醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%8E%20AI%20%E5%8D%8F%E4%BD%9C%E4%B8%A4%E5%B9%B4%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E7%A0%B4%E5%B1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    两年思考与破局
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 新范式：落地实践
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 新范式：落地实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技术栈陈旧与人才断层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        需求文档与代码脱节
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        团队沟通成本高
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缺陷发现滞后与修复成本高
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        知识流失严重
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、SDD的内涵与优势
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD的定义
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD的关键特征
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD的优势
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sddspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD与SPEC的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vibecodingsdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VibeCoding与SDD关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、SDD的落地实践流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 选择合适的试点项目
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 建立规范管理平台
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 规范编写与评审流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 开发AI理解层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 建立agent体系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 制定规则和规范
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 逐步推广和优化
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        落地时需要注意的事项
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="落地时需要注意的事项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        组织层面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技术层面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程层面
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、SDD对软件人才的影响
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复合人才需求增加
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        新人面临挑战
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        团队协作能力要求提高
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、结语
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%EF%BC%88SDD%EF%BC%89%EF%BC%9A%E7%94%A8%20AI%20%E5%86%99%E7%94%9F%E4%BA%A7%E7%BA%A7%E4%BB%A3%E7%A0%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用 AI 写生产级代码
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Harness Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Harness-Engineering%20%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%EF%BC%9A%E5%9C%A8%E6%99%BA%E8%83%BD%E4%BD%93%E4%BC%98%E5%85%88%E7%9A%84%E4%B8%96%E7%95%8C%E4%B8%AD%E5%88%A9%E7%94%A8%20Codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在智能体优先的世界中利用 Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具与实践
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工具与实践
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Claude Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Claude%20Code/Claude%20Code%20Skills%EF%BC%9A%E8%AE%A9%20AI%20%E5%8F%98%E8%BA%AB%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%8C%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code Skills
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Claude%20Code/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Antigravity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Antigravity/Antigravity%20%E8%A7%84%E6%A0%BC%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity 规格开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Antigravity/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codex
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Codex/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技术栈陈旧与人才断层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        需求文档与代码脱节
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        团队沟通成本高
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缺陷发现滞后与修复成本高
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        知识流失严重
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、SDD的内涵与优势
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD的定义
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD的关键特征
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD的优势
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sddspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD与SPEC的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vibecodingsdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VibeCoding与SDD关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、SDD的落地实践流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 选择合适的试点项目
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 建立规范管理平台
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 规范编写与评审流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 开发AI理解层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 建立agent体系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 制定规则和规范
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 逐步推广和优化
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        落地时需要注意的事项
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="落地时需要注意的事项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        组织层面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技术层面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程层面
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、SDD对软件人才的影响
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复合人才需求增加
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        新人面临挑战
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        团队协作能力要求提高
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、结语
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>在当今快速发展的技术领域，软件需求不断变化，传统软件工程方法面临着诸多挑战。SDD（Specification-Driven Development，规范驱动开发）作为一种新兴的软件开发理念，正逐渐成为行业关注的焦点。本文将结合行业趋势和实际案例，深入探讨SDD的内涵、优势以及落地实践中的关键要点。【腾讯云架构师同盟上海同盟1月技术沙龙】</p>
+<h1 id="_1">一、传统软件工程的痛点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><img alt="" src="../_resources/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F/img1.png" /></p>
+<h2 id="_2">技术栈陈旧与人才断层<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在金融行业等传统领域，许多核心系统仍采用陈旧的技术栈，这些技术虽然在过去发挥了重要作用，但随着时间的推移，熟悉这些技术的人才逐渐减少，导致系统维护和升级变得困难。以某银行为例，懂"Cobal”技术的人员大多是五十多岁的老员工，年轻一代对这些技术了解甚少，形成了明显的人才断层。</p>
+<h2 id="_3">需求文档与代码脱节<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>传统软件工程中，需求文档和代码往往是两张皮，文档写完就过时，需求和代码严重脱节。客户验收时，不仅要看测试用例，还要从架构治理的角度检查前期架构与最终落地实施的差距。由于文档更新不及时，很多时候无法通过验收，导致项目延期和成本增加。此外，使用AI生成的文档虽然逻辑通顺，但往往存在诸多破绽，不能作为公司的核心资产。</p>
+<h2 id="_4">团队沟通成本高<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>团队成员之间的沟通成本居高不下是传统软件工程的普遍问题。在项目开发过程中，产品、需求、开发、测试等环节的人员往往存在沟通障碍，形成"鄙视链”和"互掐链”。大家各执己见，难以达成共识，导致项目进展缓慢，返工率高。例如，开发和测试人员之间的关系往往比较紧张，产品与架构、开发人员之间也容易出现矛盾。</p>
+<h2 id="_5">缺陷发现滞后与修复成本高<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>在传统软件工程中，缺陷往往在集成测试阶段才被发现，此时修复成本已经很高。而且，很多缺陷是由于前期重视不够，导致问题不断积累，最终形成不可挽回的损失。此外，测试往往滞后于开发，无法及时发现问题，影响项目质量和进度。</p>
+<h2 id="_6">知识流失严重<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>随着员工的流动，企业的知识流失问题日益严重。很多企业中，真正掌握核心知识的人寥寥无几，一旦这些人员离职，企业将面临巨大的知识损失。同时，AI的发展在一定程度上对新人不友好，新人得不到足够的锻炼机会，上手速度变慢，进一步加剧了知识流失的问题。</p>
+<h2 id="sdd">二、SDD的内涵与优势<a class="headerlink" href="#sdd" title="Permanent link">&para;</a></h2>
+<h2 id="sdd_1">SDD的定义<a class="headerlink" href="#sdd_1" title="Permanent link">&para;</a></h2>
+<p>SDD即规范驱动开发，是一种以规范为核心的软件开发方法。它强调规范即代码，将需求、设计、实现等环节统一到规范中，通过规范来驱动整个软件开发过程。SDD的核心思想是将做什么（规范）和怎么做（代码）分离开来，让AI根据规范自动生成代码，从而提高开发效率和质量。</p>
+<p><img alt="" src="../_resources/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F/img2.png" /></p>
+<h2 id="sdd_2">SDD的关键特征<a class="headerlink" href="#sdd_2" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../_resources/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F/img3.png" /></p>
+<ul>
+<li>
+<p>规范暨代码：SDD将规范视为代码的一部分，高质量的规范比代码更有价值。规范不仅是需求文档，更是指导AI生成代码的指令。通过规范，团队成员可以达成共识，减少沟通成本。</p>
+</li>
+<li>
+<p>版本控制：规范会随着项目的进展不断演变，因此需要进行版本控制。通过版本控制，可以跟踪规范的变化，确保团队成员使用的是最新的规范。</p>
+</li>
+<li>
+<p>结合审查流程：SDD需要建立严格的审查流程，确保规范的正确性和完整性。审查不仅包括人工审查，还可以借助AI工具进行自动化审查，提高审查效率和准确性。</p>
+</li>
+</ul>
+<h2 id="sdd_3">SDD的优势<a class="headerlink" href="#sdd_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>提高开发效率：通过AI自动生成代码，减少了人工编写代码的工作量，提高了开发效率。同时，规范的统一可以减少团队成员之间的沟通成本，加快项目进度。</p>
+</li>
+<li>
+<p>保证代码质量：规范的统一可以确保代码的风格和结构一致，提高代码的可读性和可维护性。AI生成的代码经过严格的审查和测试，可以减少缺陷的产生，提高代码质量。</p>
+</li>
+<li>
+<p>降低维护成本：规范的统一和版本控制可以方便地跟踪代码的变化，降低维护成本。当需求发生变化时，只需要修改规范，AI就可以自动生成新的代码，减少了人工修改代码的工作量。</p>
+</li>
+<li>
+<p>促进团队协作：SDD强调团队成员之间的协作，通过规范的统一，团队成员可以更好地理解彼此的工作，减少沟通障碍。同时，自动化的审查和测试可以让团队成员将更多的精力放在核心业务上，提高团队的整体效率。</p>
+</li>
+</ul>
+<h2 id="sddspec">SDD与SPEC的关系<a class="headerlink" href="#sddspec" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../_resources/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F/img4.jpg" /></p>
+<p>在SDD的体系中，SPEC（Specification，规范文档）是核心载体。SPEC通常包含以下几个关键部分：</p>
+<ul>
+<li>
+<p>需求规范：明确系统要实现的功能和业务规则</p>
+</li>
+<li>
+<p>技术规范：定义系统的架构、接口和实现标准</p>
+</li>
+<li>
+<p>测试规范：描述系统的测试用例和验收标准</p>
+</li>
+</ul>
+<p>SPEC作为SDD的输入，是AI生成代码的直接依据。高质量的SPEC需要满足以下要求：</p>
+<ul>
+<li>
+<p>完整性：覆盖所有业务规则和技术细节</p>
+</li>
+<li>
+<p>一致性：各部分规范之间无矛盾和冲突</p>
+</li>
+<li>
+<p>可执行性：能够被AI准确理解和转化为代码</p>
+</li>
+<li>
+<p>可维护性：便于团队成员理解和修改</p>
+</li>
+</ul>
+<h2 id="vibecodingsdd">VibeCoding与SDD关系<a class="headerlink" href="#vibecodingsdd" title="Permanent link">&para;</a></h2>
+<p>VibeCoding是一种强调开发者"感觉”和"直觉”的编程方式，而SDD则提供了结构化的约束。两者并非对立关系，而是可以相互补充：</p>
+<ul>
+<li>
+<p>VibeCoding的优势：适合创意探索和快速原型开发</p>
+</li>
+<li>
+<p>SDD的优势：适合大型项目和长期维护</p>
+</li>
+<li>
+<p>融合模式：在SDD框架内保留VibeCoding的灵活性，通过规范约束保证代码质量</p>
+</li>
+</ul>
+<h2 id="sdd_4">三、SDD的落地实践流程<a class="headerlink" href="#sdd_4" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../_resources/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F/img5.png" /></p>
+<h2 id="1">1. 选择合适的试点项目<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>在推行SDD时，不要一开始就选择复杂的核心模块，如账务相关模块，而应该选择相对边缘、风险较低的模块作为试点。例如，可以选择新建的项目，这些项目没有历史包袱，团队接受程度高，可以从头开始推行SDD。同时，要选择业务风险较低的项目，避免因业务过于复杂而影响SDD的实施效果。</p>
+<h2 id="2">2. 建立规范管理平台<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>建立专门的规范管理平台，用于存储和管理各种规范。平台应该具备版本控制、规范模板、规范准入等功能，方便团队成员使用和维护规范。例如，可以将规范按照业务属性进行分类，如存贷汇、存款、贷款、合约账户等，便于团队成员查找和使用。</p>
+<h2 id="3">3. 规范编写与评审流程<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>在SDD实践中，规范编写是关键环节。通常采用以下流程：</p>
+<ol>
+<li>
+<p>需求分析：业务专家和产品经理共同梳理业务规则</p>
+</li>
+<li>
+<p>规范编写：开发团队根据需求编写技术规范文档</p>
+</li>
+<li>
+<p>多方评审：业务、技术、测试等角色共同评审规范</p>
+</li>
+<li>
+<p>规范固化：通过自动化工具将规范转化为可执行格式</p>
+</li>
+<li>
+<p>AI生成：基于规范自动生成代码和测试用例</p>
+</li>
+</ol>
+<h2 id="4-ai">4. 开发AI理解层<a class="headerlink" href="#4-ai" title="Permanent link">&para;</a></h2>
+<p>开发AI理解层，微调私有LLM，让它读懂你们公司的"暗语”，让AI协助团队成员理解规范。可以开发规范解析agent，根据不同的业务属性，帮助团队成员理解规范的内容和要求。同时，要建立Skills技能库，将团队的工具能力进行封装，形成各种技能，为AI提供支持。</p>
+<h2 id="5-agent">5. 建立agent体系<a class="headerlink" href="#5-agent" title="Permanent link">&para;</a></h2>
+<p>建立agent体系，将不同的技能进行组合，形成各种agent，用于完成不同的任务。例如，可以建立需求分析agent、编码审查agent、测试agent等，提高开发效率和质量。同时，要注意agent的颗粒度问题，避免agent过于复杂或过于简单。组"Agent战队"：需求Agent+编码Agent+测试Agent，颗粒度="一个API"</p>
+<h2 id="6">6. 制定规则和规范<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>在推行SDD的过程中，要制定各种规则和规范，约束整个工程的开发过程。例如，要制定代码风格规范、项目结构规范、安全合规规范等，确保代码的质量和安全性。同时，要让AI学习历史代码，了解团队的开发风格和习惯，生成符合要求的代码。"人机双审"：AI先过一遍规则，人类再点"Approve"</p>
+<h2 id="7">7. 逐步推广和优化<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>在试点项目取得成功后，要逐步将SDD推广到更多的团队和项目中。在推广过程中，要不断总结经验，优化SDD的实施方法和流程。同时，要关注团队成员的反馈，及时解决遇到的问题，确保SDD的顺利推行。</p>
+<h2 id="_7">落地时需要注意的事项<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">组织层面<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>管理层支持：确保管理层理解并支持SDD转型，提供必要的资源和培训</p>
+</li>
+<li>
+<p>团队文化：培养规范先行的文化，鼓励团队成员积极参与规范制定和评审</p>
+</li>
+<li>
+<p>人才培养：加强对团队成员的培训，提高规范编写和AI工具使用能力</p>
+</li>
+</ul>
+<h3 id="_9">技术层面<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>工具选型：选择适合团队的规范管理工具和AI生成平台</p>
+</li>
+<li>
+<p>版本控制：建立严格的规范版本控制机制，确保团队使用最新规范</p>
+</li>
+<li>
+<p>质量保证：建立规范质量评估体系，确保规范的完整性和一致性</p>
+</li>
+</ul>
+<h3 id="_10">流程层面<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>试点先行：先在小范围试点，取得成功后再逐步推广</p>
+</li>
+<li>
+<p>持续改进：定期回顾SDD实施效果，不断优化规范和流程</p>
+</li>
+<li>
+<p>风险控制：制定风险应对措施，确保SDD转型过程中的业务连续性</p>
+</li>
+</ul>
+<h2 id="sdd_5">四、SDD对软件人才的影响<a class="headerlink" href="#sdd_5" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../_resources/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F/img6.jpg" /></p>
+<h2 id="_11">复合人才需求增加<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>随着SDD的推行，企业对复合人才的需求将越来越大。未来的软件人才不仅要具备扎实的技术功底，还要具备良好的沟通能力、团队协作能力和创新能力。既懂业务又懂技术的复合人才将更受企业青睐。</p>
+<h2 id="_12">新人面临挑战<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>AI的发展在一定程度上对新人不友好，新人需要在短时间内掌握更多的知识和技能，才能适应行业的发展。同时，新人需要有师傅带教，才能更好地融入团队，提高自己的能力。因此，企业需要加强对新人的培养和培训，为新人提供更多的锻炼机会。</p>
+<h2 id="_13">团队协作能力要求提高<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>SDD强调团队成员之间的协作，因此对团队协作能力的要求也越来越高。即使有了AI的支持，团队成员之间的沟通和协作仍然是项目成功的关键。企业需要加强团队建设，提高团队成员的协作能力和凝聚力。</p>
+<h2 id="_14">五、结语<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../_resources/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F/img7.jpg" /></p>
+<p>SDD作为一种新兴的软件开发理念，为解决传统软件工程的痛点提供了新的思路和方法。通过规范驱动开发，可以提高开发效率、保证代码质量、降低维护成本，促进团队协作。在推行SDD的过程中，企业需要选择合适的试点项目，建立规范管理平台，开发AI理解层，建立agent体系，制定规则和规范，并逐步推广和优化。同时，企业需要关注SDD对软件人才的影响，培养和吸引更多的复合人才，提高团队的整体素质和能力。相信在不久的将来，SDD将成为软件工程领域的主流开发方法，推动软件行业的发展和变革。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

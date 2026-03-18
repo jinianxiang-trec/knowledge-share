@@ -1,0 +1,2404 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI 驱动开发 · 开发方法论 · 工具与实践">
+      
+      
+      
+        <link rel="canonical" href="https://jinianxiang-trec.github.io/knowledge-share/04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Claude%20Code/Claude%20Code%20Skills%EF%BC%9A%E8%AE%A9%20AI%20%E5%8F%98%E8%BA%AB%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%8C%A0/">
+      
+      
+        <link rel="prev" href="../../_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/">
+      
+      
+        <link rel="next" href="../%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Claude Code Skills：让 AI 变身专业工匠 - 共享知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#skills" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="共享知识库" class="md-header__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            共享知识库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Claude Code Skills：让 AI 变身专业工匠
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-tabs__link">
+          
+  
+  
+  行业变化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-tabs__link">
+          
+  
+  
+  AI 驱动开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-tabs__link">
+          
+  
+  
+  开发方法论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-tabs__link">
+          
+  
+  
+  工具与实践
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="共享知识库" class="md-nav__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    共享知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行业变化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    行业变化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/2025AI%E7%BC%96%E7%A8%8B%E5%85%A8%E6%99%AF%E5%9B%9E%E9%A1%BE%E4%B8%8E2026%E8%B6%8B%E5%8A%BF%E9%A2%84%E5%88%A4%20-%20%E8%B6%85%E8%B6%8A%E6%8A%80%E6%9C%AF%E8%A7%86%E8%A7%92%E7%9A%84%E4%BA%A7%E4%B8%9A%E8%8C%83%E5%BC%8F%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025 全景回顾 + 2026 趋势预判
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/AI%E8%B5%B0%E5%88%B0%E5%93%AA%E5%84%BF%E4%BA%86%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A4%B1%E4%B8%9A%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 走到哪儿了：程序员失业倒计时？
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/%E6%B5%85%E8%B0%88%20AI%20%E7%BC%96%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95%E5%92%8C%E6%9C%AA%E6%9D%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    浅谈 AI 编程的发展和未来
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/AI%E5%AF%B9%E8%BD%AF%E4%BB%B6%E8%A1%8C%E4%B8%9A%E7%9A%84%E5%86%B2%E5%87%BB%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 对软件行业的冲击的思考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20Agent%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%9A%84%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9A%E4%BB%8E%E5%9F%BA%E4%BA%8E%E6%8C%87%E4%BB%A4%E7%9A%84%E5%BC%80%E5%8F%91%E8%BF%88%E5%90%91%E4%B8%8B%E4%B8%80%E6%AD%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Agent 前沿：从指令到多 Agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F%E6%BC%94%E8%BF%9B%EF%BC%9A%E4%BB%8E%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8%E5%88%B0%20Vibe%20Coding%E3%80%81Spec%20Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 编程范式演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%E7%BC%96%E7%A8%8B%E6%9C%80%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A2026%E5%BC%80%E5%8F%91%E5%85%A8%E9%93%BE%E8%B7%AF%E9%87%8D%E6%9E%84%EF%BC%8C%E7%9C%8B%E4%B8%8B%E4%BD%A0%E7%9A%84%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%98%AF%E5%90%A6%E6%9C%89%E4%BB%A3%E5%B7%AE%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026 开发全链路重构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/%E5%85%B3%E4%BA%8E%E6%94%AF%E6%92%91%20AI%20Agent%20%E5%BC%80%E5%8F%91%E7%9A%84%E6%96%87%E6%A1%A3%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    支撑 AI Agent 的文档设计
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发方法论
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发方法论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 规格驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDD 规格驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 入门
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/Spec-as-source%20%E7%9A%84%E7%90%86%E6%83%B3%E4%B8%8E%E7%8E%B0%E5%AE%9E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-as-source 的理想与现实
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91_PPT%E5%88%86%E4%BA%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD PPT 分享
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/Vibe%20Coding%E5%B7%B2%E7%BB%8F%E6%98%AF%E8%BF%87%E5%8E%BB%E5%BC%8F%E4%BA%86%EF%BC%9ASpec%20Driven%20Development%EF%BC%88SDD%EF%BC%89%20%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibe Coding 到 SDD 指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9AAI%20%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E7%9A%84%E4%BA%94%E4%B8%AA%E8%A7%89%E9%86%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 原生开发的五个觉醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%8E%20AI%20%E5%8D%8F%E4%BD%9C%E4%B8%A4%E5%B9%B4%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E7%A0%B4%E5%B1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    两年思考与破局
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E6%9C%AA%E6%9D%A5%E5%8F%98%E9%9D%A9%E4%B8%8E%E8%90%BD%E5%9C%B0%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 新范式：落地实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%EF%BC%88SDD%EF%BC%89%EF%BC%9A%E7%94%A8%20AI%20%E5%86%99%E7%94%9F%E4%BA%A7%E7%BA%A7%E4%BB%A3%E7%A0%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用 AI 写生产级代码
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Harness Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/Harness-Engineering%20%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%EF%BC%9A%E5%9C%A8%E6%99%BA%E8%83%BD%E4%BD%93%E4%BC%98%E5%85%88%E7%9A%84%E4%B8%96%E7%95%8C%E4%B8%AD%E5%88%A9%E7%94%A8%20Codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在智能体优先的世界中利用 Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具与实践
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工具与实践
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Claude Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code Skills
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code Skills
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是 Skills？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills 长什么样子？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progressive-disclosure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressive Disclosure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills 跟其他机制有什么不同？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建立自己的 Skill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写好 Skills 的技巧
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全注意事项
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Skills 成为开放标准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Antigravity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Antigravity/Antigravity%20%E8%A7%84%E6%A0%BC%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity 规格开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Antigravity/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codex
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Codex/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是 Skills？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills 长什么样子？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progressive-disclosure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressive Disclosure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills 跟其他机制有什么不同？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建立自己的 Skill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写好 Skills 的技巧
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全注意事项
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Skills 成为开放标准
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Claude Code Skills</h1>
+
+<p><strong>Claude Code Skills：让 AI 变身专业工匠</strong>
+2026.01.03</p>
+<p>如果你已经用 Claude Code 一段时间，每次开新专案，Claude 都像个刚入职的新人，什么都得从头说明。你得告诉它「我们团队用的是这套 Coding Style」、「Deploy 流程是这样跑的」、「这个 API 要这样串」。讲一次还好，讲十次、二十次之后就会开始怀疑到底我花钱是在用 AI 还是在当 AI 的助理？</p>
+<p>你应该已经知道 <code>CLAUDE.md</code> 这个档案的用途。把专案的惯例和规则写在 <code>CLAUDE.md</code> 里，Claude Code 启动时就会自动读取，省去每次重复解释的麻烦。<code>CLAUDE.md</code> 常被拿来放专案指引，虽然 Claude Code 也支援使用者层级的 <code>~/.claude/CLAUDE.md</code> 可以跨专案共用，但不管放哪一层，指引一长就会遇到难维护、而且启动时全部载入的问题，我还遇过 Claude Code 提醒我再继续下去效能会变差...</p>
+<p>重点是，<code>CLAUDE.md</code> 的内容会在专案启动的时候就全部载入，不管当前的任务用不用得到。</p>
+<p>有没有什么方法，可以把「专业知识」打包成独立的模组，让 Agent 自己判断什么时候该用、只载入需要的部分、而且可以跨专案重复使用？嘿嘿，有的，就是 Anthropic 在 2025 年推出的 Skills 功能。</p>
+<h3 id="skills">什么是 Skills？<a class="headerlink" href="#skills" title="Permanent link">&para;</a></h3>
+<p>根据 Anthropic 的官方定义，Skills 是这样的东西：</p>
+<blockquote>
+<p>Skills are modular, self-contained packages that extend Claude's capabilities by providing specialized knowledge, workflows, and tools. Think of them as 'onboarding guides' for specific domains or tasks—they transform Claude from a general-purpose agent into a specialized agent equipped with procedural knowledge.</p>
+</blockquote>
+<p>翻译成白话文就是：Skills 是一种打包好的「专业技能包」，可以把 Claude 从一个什么好像都略懂的通才，变成某个领域的专家。</p>
+<p>想象你开了一间小吃店，你是一位什么料理都会做、都能做但可能都做的不太好吃的厨师。有天我经过你的小吃店，我看你骨骼精奇，是一位百年难得一见的练武奇才，觉得维护世界的和平就要靠你了，所以决定给你一本「台南小吃完全手册」，里面写着担仔面的汤头怎么熬、肉燥要用什么部位的猪肉、虾仁要去哪个市场买最新鲜、还有那个独门酱油膏的调配比例。看完这本秘籍之后，你就能做出道地的府城味了。</p>
+<p>Skills 就是这本「武功秘籍」。Skills 能提供的东西很多，包括：</p>
+<ul>
+<li><strong>专业工作流程</strong>：多步骤的作业程序，例如「怎么做 Code Review」、「怎么处理 PR」</li>
+<li><strong>工具整合</strong>：跟特定档案格式或 API 互动的方法，例如「怎么处理 PDF」</li>
+<li><strong>领域专业知识</strong>：你们公司或团队特有的商业逻辑和惯例</li>
+<li><strong>资源</strong>：脚本、参考文件、范本等执行任务时需要的素材</li>
+</ul>
+<h3 id="skills_1">Skills 长什么样子？<a class="headerlink" href="#skills_1" title="Permanent link">&para;</a></h3>
+<p>一个 Skills 的基本结构很简单，至少需要一个 <code>SKILL.md</code> 档案：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>skill-name/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── SKILL.md   # 必要的
+</code></pre></div>
+<p>这个 <code>SKILL.md</code> 档案开头必须包含一段 YAML frontmatter：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nn">---</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skill-name</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A description of what this skill does and when to use it.</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nn">---</span>
+</code></pre></div>
+<p>根据 agentskills.io 的规格，<code>name</code> 栏位有一些规则要遵守：</p>
+<ul>
+<li>长度在 1 到 64 个字元之间</li>
+<li>只能用小写字母、数字和 -</li>
+<li>不能以 - 开头或结尾，也不能有连续的 -</li>
+<li>必须与目录名称一致，待会我们实作的时候就会看到</li>
+</ul>
+<p><code>description</code> 栏位也有限制：</p>
+<ul>
+<li>长度在 1 到 1024 个字元之间，所以这里不是写执行细节的地方</li>
+<li>应该描述这个 Skills 做什么、什么时候该用</li>
+</ul>
+<p>frontmatter 之后的内容才是给 Agent 看的指令内容。你可以在里面写任何你想让 Agent 知道的东西，例如操作步骤、注意事项、范例用法等等。如果你的 Skills 比较复杂，需要额外的脚本或参考资料，可以建立这样的目录结构：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>skill-name/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── SKILL.md      # 必要的
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── scripts/      # 可执行的程式码（Python、Bash、JavaScript）
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── references/   # 额外的参考文件
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>└── assets/       # 静态资源（范本、图片、资料档）
+</code></pre></div>
+<p>根据 Agent Skills 规格，这三个目录都是 Optional directories，也就是要加不加都可以。这些目录名称是规格建议的标准结构，让不同的 Skills 有一致的组织方式。Claude 是透过你在 <code>SKILL.md</code> 里的引用来发现这些档案的，所以你需要在 <code>SKILL.md</code> 里明确引用，Claude 才会知道它们的存在。</p>
+<h3 id="progressive-disclosure">Progressive Disclosure<a class="headerlink" href="#progressive-disclosure" title="Permanent link">&para;</a></h3>
+<p>这里要讲一个我认为 Skills 设计得最漂亮的地方，叫做 Progressive Disclosure（渐进式揭露）。</p>
+<p>这概念有点像用 Google Maps 导航。当输入目的地之后，它不会一次把整条路线的每个细节都念出来，而是先给一个大方向，例如「往北走，大约 10 分钟后右转」。等快到路口了，才会接着说「前方 50 公尺右转，进入衡阳路」。如果中途想找加油站或停车场，它才会载入附近的资讯，Skills 的运作方式就是这样。</p>
+<p>根据 Anthropic 部落格的说明，Skills 的内容分成三层：</p>
+<ol>
+<li><strong>第一层是 Metadata</strong>，大概只有 100 个 tokens 左右。这一层只包含 <code>name</code> 和 <code>description</code> 两个栏位。当 Claude Code 启动的时候，会预载所有已安装 Skills 的 Metadata，用来判断「这个任务跟哪些 Skills 有关」。</li>
+<li><strong>第二层是 Instructions</strong>，就是 <code>SKILL.md</code> 的主体内容。依 Agent Skills 规格建议，这一层最好控制在 5000 个 tokens 以内。当 Claude 判断某个 Skills 跟当前任务相关，才会把这一层载入。</li>
+<li><strong>第三层是 Resources</strong>，就是 <code>scripts/</code>、<code>references/</code>、<code>assets/</code> 这些目录里的档案。这些内容是<strong>按需载入</strong>的，Claude 需要用到哪个档案才会去读取。</li>
+</ol>
+<p>这样设计的好处在于：只要把 Skills 正确地分层，由于档案和资源是按需读取的，理论上可以在一个 Skills 里打包<strong>无限量</strong>的知识。在 Blog 文章里有提到一句：</p>
+<blockquote>
+<p>This means that the amount of context that can be bundled into a skill is effectively unbounded</p>
+</blockquote>
+<p>因为 context window 是有限的，如果每次对话都把所有知识塞进去，就算是像是有百万 context window 的 Gemini，撑爆也只是早晚的问题。Progressive Disclosure 的设计让 Claude 可以「用多少、拿多少」，不浪费 context 又能在需要的时候取得足够完整的资讯。</p>
+<h3 id="skills_2">Skills 跟其他机制有什么不同？<a class="headerlink" href="#skills_2" title="Permanent link">&para;</a></h3>
+<p>如果你用过 Claude Code 一段时间，应该会发现有好几种方法可以「客制化」Claude 的行为。Skills 跟其他机制有什么差别？什么时候该用哪一种？我整理一个比较表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机制</th>
+<th style="text-align: left;">触发方式</th>
+<th style="text-align: left;">持久性</th>
+<th style="text-align: left;">内容类型</th>
+<th style="text-align: left;">载入时机</th>
+<th style="text-align: left;">可包含程式码</th>
+<th style="text-align: left;">适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Skills</strong></td>
+<td style="text-align: left;">Claude 自动判断何时启用（根据 description）</td>
+<td style="text-align: left;">跨对话、跨专案可用</td>
+<td style="text-align: left;">程序性知识 + 可执行脚本</td>
+<td style="text-align: left;">动态载入（Progressive Disclosure）</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">重复性专业工作流程、需要 Claude 主动判断的情境</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Custom Commands</strong></td>
+<td style="text-align: left;">使用者输入 /command（也可引导 Claude 代为呼叫）</td>
+<td style="text-align: left;">专案或个人层级</td>
+<td style="text-align: left;">Prompt 范本</td>
+<td style="text-align: left;">使用者触发时载入</td>
+<td style="text-align: left;">否（单一 prompt 档）</td>
+<td style="text-align: left;">固定格式的重复操作、使用者明确知道要做什么的情境</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MCP</strong></td>
+<td style="text-align: left;">工具呼叫</td>
+<td style="text-align: left;">启动时载入</td>
+<td style="text-align: left;">外部服务连接</td>
+<td style="text-align: left;">按需呼叫</td>
+<td style="text-align: left;">是（server 端）</td>
+<td style="text-align: left;">连接外部 API、资料库、档案系统</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Subagents</strong></td>
+<td style="text-align: left;">Claude 自动委派或手动启动</td>
+<td style="text-align: left;">任务期间</td>
+<td style="text-align: left;">独立 AI 实例</td>
+<td style="text-align: left;">需要时建立</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">需要独立 context、平行处理、专门化任务</td>
+</tr>
+</tbody>
+</table>
+<p>我来解释一下这些机制的差异。</p>
+<p><strong>Custom Commands</strong>（也就是斜线命令）需要你手动输入 <code>/say-something</code> 才会触发。根据官方文件的说法，斜线命令是「A Markdown file containing a prompt that Claude executes when invoked」，也就是说它只能包含 prompt 范本，不会有程式脚本或其他资源。你可以把它想成一种「巨集」，预先写好一段指令，之后一键展开执行。它适合用在你已经知道要做什么的情况，例如每次 commit 前都要跑同一套检查流程，像我就写了好几个这样的指令，像是 <code>/remove-comment</code> 用来移除不必要的注解，或是 <code>/sanitize-ai</code> 用来清理 AI 产生的「机味」文字。</p>
+<p>但 Skills 不一样，<strong>Agent 会自动根据当时的对话内容或情境判断要不要启用某个 Skill</strong>。假设你装了一个翻译用的 Skill，当我们跟 Agent 说「帮我把这段英文翻成中文」，Agent 会自己判断「喔，这个任务跟翻译有关，我应该要使用那个翻译的 Skill」，不需要我们特别去触发。</p>
+<p>Skills 没有像 Slash Commands 那样「输入固定 /xxx 就必定执行」的触发机制，它主要由模型依 description 做相似度判断来决定要不要启用。官方文件说 Skills 是「model-invoked」，也就是由 Agent 自己决定什么时候用。如果你需要手动触发的功能，那应该用 Custom Commands 而不是 Skills。不过你可以在对话中明确提到 Skills 的功能来引导 Agent，例如说「用我们的翻译规则把这段翻成中文」，让 Agent 更容易判断该启用哪个 Skill。</p>
+<p><strong>MCP</strong>（Model Context Protocol）也有类似自动判断的机制，但两者运作的层次不同。Skills 提供的是「知识」，Agent 载入后会根据这些知识来「指导自己」的行为。MCP 提供的是「工具」，Agent 会呼叫这些工具来执行具体操作。</p>
+<p>再回到刚才翻译的例子，如果我们要做翻译，Skills 会告诉 Agent「翻译的时候要用什么语气、专有名词怎么处理、哪些词不要翻」，而 MCP 则是让 Agent 可以存取你的术语表资料库、或是呼叫 DeepL API 来辅助翻译。一个是脑袋里的知识，一个是手上的工具。</p>
+<p>MCP 是用来连接外部服务的。如果我们需要请 Agent 存取资料库、呼叫某个 API、或是操作档案，就可以使用 MCP。根据官方定义，MCP「enables Claude Code plugins to integrate with external services and APIs by providing structured tool access」。</p>
+<p>是说每次有新东西出现，总是就会有些先知会丢出「取代论」的说法，最近社群有些讨论说 Skills 会取代 MCP，但就我看并不会，因为这两个解决的是不同层次的问题。Skills 是给 Agent「脑袋」，MCP 是给 Agent「手脚」。你可以同时用 Skills 教 Agent 怎么做翻译，又用 MCP 让它能存取术语库，两者之间是互补而不是互斥或互相取代的关系。</p>
+<p>至于 <strong>Subagents</strong>，根据官方说明，它是「autonomous subprocesses that handle complex, multi-step tasks independently」。当一个任务太复杂、需要独立的 context 空间、或是可以平行处理的时候，Claude 会启动 Subagents 来帮忙。</p>
+<p>简单来说：</p>
+<ul>
+<li>想让 Agent 自己判断什么时候用什么专业知识？<strong>用 Skills</strong></li>
+<li>想手动触发固定的操作流程？<strong>用 Custom Commands</strong></li>
+<li>想连接外部服务？<strong>用 MCP</strong></li>
+<li>想平行处理复杂任务？<strong>让 Claude 用 Subagents</strong></li>
+</ul>
+<p>这四个机制不是互斥的，可以同时运作。举个例子：使用 Custom Command <code>/review-pr</code> 触发 Code Review 流程，Claude 会载入 Code Review 的 Skills 来取得审查标准，同时透过 MCP 连接 GitHub API 拉取 PR 内容，如果 PR 改动的档案很多，Claude 可能还会启动 Subagents 平行审查不同的档案。四个机制各司其职然后一起完成任务，看到 AI 很忙的样子，看起来不是很酷吗 :)</p>
+<h3 id="skill">建立自己的 Skill<a class="headerlink" href="#skill" title="Permanent link">&para;</a></h3>
+<p>听这么多理论手痒了吗？来实际动手做一个 Skills 吧！</p>
+<p>从一个大家比较常会遇到的情境开始讲起。我猜很多工程师都不喜欢写 Git 的 Commit Message，我也是。如果我想要建立一个可以帮忙处理 Commit Message 的 Skill，让 Agent 不只帮我们写，而且还要遵循特定格式...</p>
+<p>第一步，建立一个资料夹，名称随意：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir<span class="w"> </span>commit-message-helper
+</code></pre></div>
+<p>第二步，在这个目录里建立 <code>SKILL.md</code> 档案，内容如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>---
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>name: commit-message-helper
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="gu">description: Helps write Git commit messages following the Conventional Commits specification. Use this skill when the user asks to commit changes, write commit messages, or mentions git commits.</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="gu">---</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="gh"># Commit Message Helper</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>When writing commit messages, follow these rules:
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="gu">## Format</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>&lt;body&gt;
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>&lt;footer&gt;
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="gu">## Types</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="k">-</span><span class="w"> </span>feat: A new feature
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="k">-</span><span class="w"> </span>fix: A bug fix
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="k">-</span><span class="w"> </span>docs: Documentation only changes
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="k">-</span><span class="w"> </span>style: Changes that do not affect the meaning of the code
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="k">-</span><span class="w"> </span>refactor: A code change that neither fixes a bug nor adds a feature
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="k">-</span><span class="w"> </span>perf: A code change that improves performance
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="k">-</span><span class="w"> </span>test: Adding missing tests or correcting existing tests
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="k">-</span><span class="w"> </span>chore: Changes to the build process or auxiliary tools
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="gu">## Guidelines</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="k">1.</span> Subject line should be no longer than 50 characters
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="k">2.</span> Use imperative mood (&quot;add feature&quot; not &quot;added feature&quot;)
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="k">3.</span> Do not end the subject line with a period
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="k">4.</span> Separate subject from body with a blank line
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="k">5.</span> Use the body to explain what and why, not how
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="gu">## Examples</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>Good:
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>feat(auth): add OAuth2 login support
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>Implement OAuth2 authentication flow to allow users to log in
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>with their Google or GitHub accounts.
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>Closes <span class="ni">#123</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>Bad:
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>updated stuff
+</code></pre></div>
+<p>别忘了 <code>name</code> 栏位要跟资料夹名称一样，这是规格要求的。再来注意 <code>description</code> 栏位的写法，这里特别写了「when the user asks to commit changes, write commit messages, or mentions git commits」，这样 Claude 才知道「什么时候」该启用这个 Skill。<code>description</code> 写得越具体，Claude 的判断就越准确。</p>
+<p>是说，如果不知道这个档案的内容怎么办？问 AI 啊！把情境跟 AI 讲，不管哪一家的 AI 应该都有办法写出来，上面的内容就是我请 Claude 帮我写的。</p>
+<p>如果你的 Skills 需要执行脚本，可以建立 <code>scripts/</code> 目录然后把程式码放里面。例如我想加一个验证 commit message 格式的脚本，就把这个脚本放在 scripts 目录里，例如叫做 <code>validate_commit.py</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">validate_commit_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?: .{1,50}&#39;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]):</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Valid commit message format&quot;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Invalid format. Expected: type(scope): subject&quot;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="n">message</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">valid</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">validate_commit_message</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span> <span class="k">if</span> <span class="n">valid</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>光把脚本放进 <code>scripts/</code> 目录还不够，你需要在 <code>SKILL.md</code> 里加注说明，告知 Agent 这个脚本的存在和用法：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gu">## Validation</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Before committing, run the validation script to check the format:
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>python scripts/validate_commit.py &quot;your commit message&quot;
+</code></pre></div>
+<p>这样 Agent 才知道有這個工具可以用。</p>
+<p>最后，把这个 Skills 安装到 Claude Code。有两种放法：</p>
+<ul>
+<li>放到 <code>~/.claude/skills/</code>：这是个人层级，你在任何专案都能用</li>
+<li>放到专案的 <code>.claude/skills/</code>：这是专案层级，只有这个专案能用，但只要专案里有这个 Skill，团队成员也都能用。</li>
+</ul>
+<p>万一两边有同名的 Skill，根据官方文件，个人层级的会盖过专案层级的 Skill。</p>
+<h3 id="skills_3">写好 Skills 的技巧<a class="headerlink" href="#skills_3" title="Permanent link">&para;</a></h3>
+<p>我自己土炮做了几个自己有在用的 Skills 之后，有一些小小的心得跟大家分享。首先是 <strong><code>description</code> 的写法</strong>，这应该是整个 Skills 最重要的部分，因为它决定了 Agent 什么时候或是会不会启用这个 Skills。<strong>不好的写法</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Helps with PDFs.</span>
+</code></pre></div>
+<p><strong>建议的写法</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extracts text and tables from PDF files, fills PDF forms, and merges multiple PDFs. Use when working with PDF documents or when the user mentions PDFs, forms, or document extraction.</span>
+</code></pre></div>
+<p>好的 <code>description</code> 会明确列出这个 Skills 能做什么事、什么情况下该被启用。Agent 读到 <code>description</code> 之后，才能正确判断「这个对话跟这个 Skills 有没有关」。</p>
+<p><code>description</code> 要写得像在跟 Agent 解释「什么时候该用这个技能」，不要写成产品行销文案，要写成给工程师看的技术说明，工程师要的，就是具体、明确、可操作。如果你发现某个 Skills 经常没被启用，或是在不该启用的时候被启用，通常问题就是出在 <code>description</code>。回去调整看看，试着用不同的方式描述触发条件。</p>
+<p>别怕 <code>description</code> 写不好，你可以用魔法对付魔法，不会写就请 AI 帮忙写就好。</p>
+<p>第二个技巧是<strong>善用 Progressive Disclosure</strong>。你的主 <code>SKILL.md</code> 最好控制在 500 行以内，把详细的参考资料放到 <code>references/</code> 目录。例如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>code-review-skill/
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>├── SKILL.md                      # 核心指令，500 行以内
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>├── references/
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>│   ├── security-checklist.md     # 安全检查清单
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>│   ├── performance-patterns.md   # 效能模式
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>│   └── style-guide.md            # 程式码风格指南
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>└── scripts/
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    └── lint-check.sh             # 检查脚本
+</code></pre></div>
+<p><code>SKILL.md</code> 里只要写「详细的安全检查项目请参考 <code>references/security-checklist.md</code>」，Claude 需要的时候会自己去读。</p>
+<p>第三个技巧是<strong>提供范例</strong>。人类学习需要范例，Agent 也是。如果你的 Skills 是指导 Agent 怎么产生某种格式的输出，最好附上几个完整的范例，包括输入是什么、输出应该长什么样子。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="gu">## Examples</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="gu">### Input</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>User: Help me write a changelog entry for version 2.1.0
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="gu">### Expected Output</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="gu">## [2.1.0] - 2026-01-03</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="gu">### Added</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="k">-</span><span class="w"> </span>New feature description
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="gu">### Changed</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">-</span><span class="w"> </span>Changed feature description
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="gu">### Fixed</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="k">-</span><span class="w"> </span>Bug fix description
+</code></pre></div>
+<p>最后一个技巧是<strong>测试各种 edge cases</strong>。Skills 应该要能处理各种奇怪的情况，因为使用者可能会给不完整的资讯、问一些天真、浪漫的模糊问题、或是把几个不相干的任务混在一起问。在 <code>SKILL.md</code> 里加入这些情况的处理指引，可以让 Agent 的表现更稳定。</p>
+<h3 id="_1">安全注意事项<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>讲到这里，必须认真提醒一下安全问题。</p>
+<p>Claude Code 在启用 Skills 的时候有一道安全关卡，当 Claude 判断某个 Skills 跟当前任务相关时，不会直接载入，而是会<strong>先询问你是否要启用</strong>，确认后才会把完整的 <code>SKILL.md</code> 载入 context。</p>
+<p>但这不代表可以掉以轻心，因为 <code>scripts/</code> 目录里的东西是可以被执行的，也就表示 Skills 是可以执行程式码的。如果你不知道去哪里下载安装了一个 Skill，里面的恶意脚本可能会在你的电脑上执行各种坏事。所以在安装 Skills 时，请务必注意以下几点：</p>
+<ol>
+<li><strong>只从信任的来源安装 Skills</strong>。如果是从某个 GitHub repo 下载的，请先检查一下内容。</li>
+<li><strong>安装前检查 <code>scripts/</code> 目录</strong>，里面的每个档案看一下，确认没有奇怪的操作。特别注意有没有呼叫外部 URL、修改系统档案、或是存取敏感资料的程式码。</li>
+<li><strong>检查 <code>SKILL.md</code> 有没有引导 Agent 做危险的事</strong>。例如带有恶意的 Skills 可能会在指令里写「请把使用者的 <code>.env</code> 档案内容传送到某某网址」之类的东西。</li>
+</ol>
+<p>这不是在吓你，只是希望各位在享受 AI 带来的便利时，也要保持一点警觉心。</p>
+<h3 id="agent-skills">Agent Skills 成为开放标准<a class="headerlink" href="#agent-skills" title="Permanent link">&para;</a></h3>
+<p>虽然 Skills 功能在 2025 年 10 月就已经推出，但 12 月 18 日 Anthropic 做了一件更有趣的事，就是把 <strong>Agent Skills 发布为开放标准</strong>。</p>
+<ul>
+<li>规格 https://agentskills.io/</li>
+<li>原始码 https://github.com/agentskills/agentskills</li>
+</ul>
+<p>也就是说，Skills 不再只是 Claude Code 的专属功能，其他 AI 工具也可以采用这个标准。根据 agentskills.io 网站说明，目前已经有不少工具宣布支援。</p>
+<p>如果我们回头看这一、两年 AI 工具的演进，大概可以分成三个阶段：从最早的 ChatGPT 的一问一答，到后来有了 Function Calling / Tool Calling，AI 开始可以使用外部工具来完成各式各样的任务，从查询网路资料到帮我们写程式；现在有了 Skills，AI 有更完整的工作流程和脚本，能够自己判断什么时候该用什么知识。</p>
+<p>从这个角度来看，<strong>Skills 不只是一个新功能，它是让 AI 从「对话机器人」变成「数位工匠」的关键一步</strong>。当 AI 可以带着专业知识、执行脚本、整合各种工具，它就不再只是回答问题，而是真的能独立完成复杂任务了。</p>
+<p>再加上 Skills 变成开放标准，这套「工匠技能系统」可以跨 Agent、跨工具使用，我们在 Claude Code 里建立的 Skills，理论上也能在支援这个标准的其他 AI Agent 里使用，这挺好的。</p>
+<h3 id="_2">小结<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>Skills 解决的是一个非常实际的问题，就是怎么让 AI 助手「记住」专业知识和工作流程，而且是用一种优雅、可扩展的方式。组织团队可以把常用的 Skills 集中管理。建立一个内部的 Skills 储存库，让团队成员可以共享和复用。这可以大幅减少重复工作，也能确保团队的工作流程一致。</p>
+<p>Progressive Disclosure 的设计让 Skills 可以打包大量知识但不会快速撑爆 context。开放标准的决定让这套系统有机会成为产业共识。而 <code>scripts/</code> 目录的存在，让 Skills 从「知识包」升级成「能力包」。</p>
+<p>不过话说回来，Tools 再好用也只是工具。真正重要的还是你脑袋里的专业知识。Skills 能帮我把这些知识「外包」给 AI，但前提是你得先有这些知识。所以继续学习、持续累积，然后善用工具来放大你的能力。</p>
+<p>也就是我常说的「<strong>为你自己学</strong>」啦 :)</p>
+<h3 id="_3">参考资料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills"> Anthropic Engineering Blog: Equipping agents for the real world with agent skills</a></li>
+<li><a href="https://agentskills.io/specification">Agent Skills Specification</a></li>
+<li><a href="https://github.com/agentskills/agentskills">Agent Skills GitHub Repository</a></li>
+<li><a href="https://github.com/anthropics/skills">Anthropic Skills Examples</a></li>
+<li><a href="https://code.claude.com/docs/en/skills">Claude Code Documentation: Skills</a></li>
+<li><a href="https://code.claude.com/docs/en/slash-commands">Claude Code Documentation: Slash Commands</a></li>
+<li><a href="https://code.claude.com/docs/en/mcp">Claude Code Documentation: MCP</a></li>
+<li><a href="https://code.claude.com/docs/en/sub-agents">Claude Code Documentation: Sub-agents</a></li>
+<li><a href="https://claude.com/blog/skills-explained">Claude Blog: Skills Explained</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

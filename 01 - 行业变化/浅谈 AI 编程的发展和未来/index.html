@@ -1,0 +1,2022 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="浅谈 AI 编程的发展与未来，以及最新的 Agents 编程范式对编程方式的冲击">
+      
+      
+        <meta name="author" content="['[[awschina]]']">
+      
+      
+        <link rel="canonical" href="https://jinianxiang-trec.github.io/knowledge-share/01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/%E6%B5%85%E8%B0%88%20AI%20%E7%BC%96%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95%E5%92%8C%E6%9C%AA%E6%9D%A5/">
+      
+      
+        <link rel="prev" href="../AI%E8%B5%B0%E5%88%B0%E5%93%AA%E5%84%BF%E4%BA%86%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A4%B1%E4%B8%9A%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%9F/">
+      
+      
+        <link rel="next" href="../AI%E5%AF%B9%E8%BD%AF%E4%BB%B6%E8%A1%8C%E4%B8%9A%E7%9A%84%E5%86%B2%E5%87%BB%E7%9A%84%E6%80%9D%E8%80%83/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>浅谈 AI 编程的发展和未来 - 共享知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="共享知识库" class="md-header__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            共享知识库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              浅谈 AI 编程的发展和未来
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-tabs__link">
+          
+  
+  
+  行业变化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-tabs__link">
+          
+  
+  
+  AI 驱动开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-tabs__link">
+          
+  
+  
+  开发方法论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-tabs__link">
+          
+  
+  
+  工具与实践
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="共享知识库" class="md-nav__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    共享知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行业变化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    行业变化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025AI%E7%BC%96%E7%A8%8B%E5%85%A8%E6%99%AF%E5%9B%9E%E9%A1%BE%E4%B8%8E2026%E8%B6%8B%E5%8A%BF%E9%A2%84%E5%88%A4%20-%20%E8%B6%85%E8%B6%8A%E6%8A%80%E6%9C%AF%E8%A7%86%E8%A7%92%E7%9A%84%E4%BA%A7%E4%B8%9A%E8%8C%83%E5%BC%8F%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025 全景回顾 + 2026 趋势预判
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI%E8%B5%B0%E5%88%B0%E5%93%AA%E5%84%BF%E4%BA%86%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A4%B1%E4%B8%9A%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 走到哪儿了：程序员失业倒计时？
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    浅谈 AI 编程的发展和未来
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    浅谈 AI 编程的发展和未来
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        草莽时代
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        结对时代
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        异变时代
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI%E5%AF%B9%E8%BD%AF%E4%BB%B6%E8%A1%8C%E4%B8%9A%E7%9A%84%E5%86%B2%E5%87%BB%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 对软件行业的冲击的思考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20Agent%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%9A%84%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9A%E4%BB%8E%E5%9F%BA%E4%BA%8E%E6%8C%87%E4%BB%A4%E7%9A%84%E5%BC%80%E5%8F%91%E8%BF%88%E5%90%91%E4%B8%8B%E4%B8%80%E6%AD%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Agent 前沿：从指令到多 Agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F%E6%BC%94%E8%BF%9B%EF%BC%9A%E4%BB%8E%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8%E5%88%B0%20Vibe%20Coding%E3%80%81Spec%20Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 编程范式演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%E7%BC%96%E7%A8%8B%E6%9C%80%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A2026%E5%BC%80%E5%8F%91%E5%85%A8%E9%93%BE%E8%B7%AF%E9%87%8D%E6%9E%84%EF%BC%8C%E7%9C%8B%E4%B8%8B%E4%BD%A0%E7%9A%84%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%98%AF%E5%90%A6%E6%9C%89%E4%BB%A3%E5%B7%AE%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026 开发全链路重构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/%E5%85%B3%E4%BA%8E%E6%94%AF%E6%92%91%20AI%20Agent%20%E5%BC%80%E5%8F%91%E7%9A%84%E6%96%87%E6%A1%A3%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    支撑 AI Agent 的文档设计
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发方法论
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发方法论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 规格驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDD 规格驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 入门
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/Spec-as-source%20%E7%9A%84%E7%90%86%E6%83%B3%E4%B8%8E%E7%8E%B0%E5%AE%9E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-as-source 的理想与现实
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91_PPT%E5%88%86%E4%BA%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD PPT 分享
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/Vibe%20Coding%E5%B7%B2%E7%BB%8F%E6%98%AF%E8%BF%87%E5%8E%BB%E5%BC%8F%E4%BA%86%EF%BC%9ASpec%20Driven%20Development%EF%BC%88SDD%EF%BC%89%20%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibe Coding 到 SDD 指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9AAI%20%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E7%9A%84%E4%BA%94%E4%B8%AA%E8%A7%89%E9%86%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 原生开发的五个觉醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%8E%20AI%20%E5%8D%8F%E4%BD%9C%E4%B8%A4%E5%B9%B4%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E7%A0%B4%E5%B1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    两年思考与破局
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E6%9C%AA%E6%9D%A5%E5%8F%98%E9%9D%A9%E4%B8%8E%E8%90%BD%E5%9C%B0%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 新范式：落地实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%EF%BC%88SDD%EF%BC%89%EF%BC%9A%E7%94%A8%20AI%20%E5%86%99%E7%94%9F%E4%BA%A7%E7%BA%A7%E4%BB%A3%E7%A0%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用 AI 写生产级代码
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Harness Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/Harness-Engineering%20%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%EF%BC%9A%E5%9C%A8%E6%99%BA%E8%83%BD%E4%BD%93%E4%BC%98%E5%85%88%E7%9A%84%E4%B8%96%E7%95%8C%E4%B8%AD%E5%88%A9%E7%94%A8%20Codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在智能体优先的世界中利用 Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具与实践
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工具与实践
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Claude Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Claude%20Code/Claude%20Code%20Skills%EF%BC%9A%E8%AE%A9%20AI%20%E5%8F%98%E8%BA%AB%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%8C%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code Skills
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Claude%20Code/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Antigravity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Antigravity/Antigravity%20%E8%A7%84%E6%A0%BC%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity 规格开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Antigravity/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codex
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Codex/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        草莽时代
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        结对时代
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        异变时代
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ai">浅谈 AI 编程的发展和未来<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
+<p>随着 LLM 的快速发展，很多知识和信息都可以通过和 LLM 的对谈得来。这打破了人类长期依赖结构化的文章、视频等载体来获取信息的惯用方式。也许以后，完全由人类写的文章，或者做的图片、视频都会越来越少，更多地会变成人类仅仅提供一些碎片化的数据，由 AI 来生成呈现，而这些数据又被 AI 所训练、吞食，后续逐渐 AI 变成了核心的信息载体和逻辑加工，而人所做的仅仅是输入和输出而已。</p>
+<p>在「AI 将导致大规模失业」、「防止 AI 毁灭人类」等宏大叙事的阴影之下，其实很多事情正在发生着一些微妙的变化。比如，虽然 LLM 的统计学本质，让我们知道它不可能自行毁灭人类，但另一方面，我们又看到，现在大部分的管理者正在使用 AI 来制订战略，下达任务，收集信息。原来几个人协作几天才能看完的报告，现在 AI 一分钟就看完了，几百页的财报五分钟就能把重点和深藏的坑挖出来，下属的工作汇报原来需要一小时，现在只需要 30 秒就能知道是否真实、前后是否连贯，摸鱼偷懒全都无所遁形。这毫无疑问是微操型管理者的至上福音，哪怕是卫生间的一张卫生纸，都尽在掌握。另一方面，苦于需要提交各类文档的员工也开始使用 AI 来制作 PPT，炮制各种报告，让 AI 帮忙生成各种事情让自己看着更充实而忙碌。所以，虽然 AI 可能不能毁灭人类，但确实 AI 很大程度上代替了人与人之间的沟通。当所有的沟通都被代替，甚至连管理职能和执行职能都被 AI 代替的时候，也许 AI 确实毁灭了些什么。</p>
+<p>这篇文章，尝试从一个末代人类开发者的角度来看 AI 编程的发展和未来。</p>
+<h2 id="_1">草莽时代<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>AI 辅助编程其实是从 LLM 风潮来之前就开始了。早在 2021 年，GitHub 就推出了 Copilot，预测用户想写什么，快速帮用户写出来。也难怪，GitHub 坐拥世界最大的代码库，那必须要好好利用一下。代码本身就是高度理智、格式化、逻辑清晰细腻，并且还要符合完整语法的，属于极其珍贵的超高品质语料，而人类的本质又是复读机，所以二者可以说是一拍即合。现在在网上冲浪，还能看到当时的用户的各种「这都能猜到！」「居然瞬间就生成这么完整！」的赞叹。</p>
+<p>当然这个时候，AI 还像是一把电动螺丝刀。它自己不能动，作用很大，很省时省力，但是完全掌握在人的手里，指哪打哪，没有自己的脾气。</p>
+<p>很快，2022 年，LLM 就横空出世。当然这里并不是说 LLM 是 2022 年才有的东西。这个东西早就有了，只是没有达到一个临界点。而 2022 年，它终于达到了一个临界点，就是让人有点分不清楚这到底是 AI 的还是真人的了。在这种风潮下，一个新的领域和对应的生态短短几年就席卷整个行业，很多工种都感受到了压力和震撼。其中首当其冲的，就是「写代码」这个行当。</p>
+<p>人们都说，程序员最喜欢搞两件事，一件事是让自己的上下游没有工作，一件事是让自己没工作。当初搞敏捷和 DevOps，蚕食了不少运维的工作，又搞自动化测试、TDD 和持续集成，搞得很多测试人员也没工作，最后是搞全栈、搞设计开发一体、搞前端设计抽象，搞得很多产品设计也没工作了。当然，对自己也一样地狠。天天都搞各种自动化的工具，自动化的流水线，降低自己的工作对自己的依赖，让自己更容易被替代。所以看到能像真人一样聊天的 LLM，程序员的第一个反应就是拿来写代码，让自己更容易被替代。</p>
+<p>在这个时期，我们不妨称之为「草莽时代」，LLM 的编程和聊天一样，充满了幻觉和错误，品质低劣。思维停留在这个时期的程序员，会觉得 AI 编程其实是一个短暂的风潮，是一个笑话。别说写好，就连写对都很困难，经常是写一堆烂代码还得自己改，所以这还得看咱传统手艺。</p>
+<h2 id="_2">结对时代<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>这个时代持续了一阵子，开始有正规军进场了。这时候开始发展出像 Cursor 这类的商业 IDE 方案，以及 Cline 之类的开源 IDE 插件方案。LLM 的生态逐渐开始崛起，大家都开始入局，就有了压力，压力就促进这个行业更快速地去爆模型。模型的参数量和上下文窗口也开始放气球一样的上涨。</p>
+<p>如果你注意 LLM 的发布，就会发现不管哪一家，都会把编程能力作为重头戏。为什么呢？第一，就是之前说的，代码作为语料实在是太优秀了，现代社会很多都运行在 IT 系统之上，读了代码，不止 LLM 获取了大量代码知识，也获得了逻辑感，以及对应的业务领域知识。第二，则是因为编程是目前看到让人眼花缭乱的 LLM 应用最稳定、最真实、最持续的 B 端应用，程序员愿意为了机械键盘花几千上万，当然更愿意为了搞掉自己而花更多。</p>
+<p>不过，如果你真的深度用过这些产品，又会发现，虽然各种工具也在增加各种功能，搞各种提示语的优化，但是真正的能力提升还是来自于模型的升级。其他的升级都像是一些小的缝缝补补，但是一旦模型升级，那就是力大砖飞，甚至直接打破了旧的范式，原来优化了半天的提示语甚至可能都无效了。</p>
+<p>当然，思维停留在这个时期的程序员，想法通常是：</p>
+<ul>
+<li>AI 必须要用，现在还手写的人确实太傻了，效率也太低</li>
+<li>AI 还是经常会犯错，人的干预真的少不了</li>
+<li>AI 的设计能力不行，要设计真的还得看人，写得越多，代码可能越难维护</li>
+<li>我还是需要有很多「土方法」、「提示语秘籍」来提升效率</li>
+</ul>
+<p>这个理解也没错，因为时期的 AI 就像是一个「赤脚程序员」，知识面极广泛，经验极丰富，但是从来没在大厂干过，也没发展出什么章法，就是一个字「干」就完了。这个时代不妨叫做「结对时代」：AI 像是一个时好时坏的帮手，与我们结对编程，我们经常需要干预，采取主动，或者给 AI 指明思路，AI 写完了，我们再审核一下结果。</p>
+<p>到了 2025 年，离 LLM 爆发仅仅三年，我们发现事情真的在起一些变化。</p>
+<h2 id="_3">异变时代<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>AI 编程产生一种异变，我感觉是从 Claude 4.5 Opus 和 Gemini 3.0 Pro 出来开始的。从这两个模型出来开始，AI 编程开始朝着一种非常奇怪的方向去演变。对于一个很早就使用 AI 辅助编程并且日常深度使用的人来说，这个演变对我来说是震撼的，因为<strong>整个范式真的变了</strong>。</p>
+<p>原来的 AI 编程，是插件形式。左边显示的是文件树，中间是编辑框，右边则是 AI 对话窗口。虽然布局也可能反过来，但是整体的思路就是这样：我在写代码，调用 AI 辅助，或者帮我写。后来，我发现编辑器们开始推行一种 Agent 模式。</p>
+<p>在这种模式下，<strong>对话框才是主流</strong>。左边显示的不是文件，而是你的对话记录，中间是对话窗口，以及和 AI 的整个对话过程，右边则是 AI 生成的执行计划。可能你的第一个反应跟我一样：啊这？代码呢？是的，这个模式完全颠覆了我们编程的范式，现在，虽然还是在「写代码」，但过程中我们甚至都不用太去在意代码了！这个变化是如此的剧烈，刚开始我是嗤之以鼻的。</p>
+<p><img alt="Agent 模式编程界面" src="../_resources/%E6%B5%85%E8%B0%88%20AI%20%E7%BC%96%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95%E5%92%8C%E6%9C%AA%E6%9D%A5/agent-mode-ui.png" /></p>
+<p>AI 尽管厉害，但是经常犯错。AI 设计很烂，还是需要人来把关。要不然 AI 来写，人来重构，这样是最佳实践。这些是我从上一个时代（几个月前）带过来的经验法则，我颇为得意。不过，事情的转机在于，我真的开始用了这个模式，并且用了最新的模型。这完全打开了新的天地。</p>
+<p>我们都知道，接受新鲜事物，是需要时间的。如果刚接触 LLM 编程，而经常它都出问题，那么我们就会记住这个感觉。而这次，新模型的能力确实让人赞叹，以至于可以让我接受这种看着非常不稳当的新范式。</p>
+<p><strong>首先，代码全都可用了。</strong> 我说全都可用，并不是说一次、一点错都不犯，但是与之前的相比，那简直是天壤之别。原来可能 3、5 次编辑就会错一次，而且经常是低级错误，少一个括号，层级错了之类，并且经常自己还不能修复。而现在，可能 20-30 次才会有一个错误，而且把错误发过去，几乎 90% 的情况都可以自行修复。仅仅这一点，就已经让人信心大增，毕竟，代码最重要的，是要能工作。即便是错误的代码，也只能在能工作的情况下被评判，而不能工作的代码则毫无意义，毫无用处。所以，代码能写对，并且基本都能写对，这个确实是一个很大的改善。</p>
+<p><strong>其次，分析梳理能力变强。</strong> 在写代码的过程中，经常会有逻辑上非常绕的地方。这种绕，很多时候并不是因为业务复杂，因为业务终归是人来执行和解释，所以业务的复杂度永远都是有限的。真正的复杂度，来自于很多语言和库的底层设计。每个设计库和语言的人，都有一套自己的思维逻辑，同样一个事情应该怎么表达，在不同语言里面会有很大的区别。这就非常考验 LLM 的分析梳理能力。比如流失处理里面，Flink 对于各种状态传递、算子的定义方式，以及不同的流怎么交汇，这些都有特定的规则和逻辑，不搞清楚就很容易写错。再比如不同平台、不同前端框架会有不同布局设计，这种设计千差万别，可能又又各种不能满足需求时的绕道措施和土办法，如果 LLM 不能深刻理解，那写错也就是分分钟的事情。这一点上新的模型也有极大的提升。虽然有些确实非常隐蔽的问题还是会把它们坑住，但是大部分时候还是可以很好地去处理。</p>
+<p><strong>然后，重构能力得到了增强。</strong> 人在写代码的时候通常是两步走：第一步，先迅速堆积代码，把功能实现；第二步，把代码重构，使之更合理。第一步之前 AI 已经可以做，现在做得更好了，那么第二步呢？根据我的经验，现在 AI 的重构能力也得到了很大的提升。原来我根本不敢让 AI 做整个代码库涉及上百个文件的重构，成功率几乎为零，而现在，经过无数次成功的尝试之后，我已经非常大胆地可以让 AI 执行全代码库的大规模重构，到目前为止，没有一次重大失误，偶尔有小问题，也能很快自行解决。虽然是 AI 代码，但结构仍然很有体系。</p>
+<p>综合这几点，我感觉<strong>整个范式的变化不再是，程序员一定要像原来一样完全了解代码的每个设计和细节</strong>，像雕刻师一样精雕细琢代码，而是可以更「放权」给 AI，而自己只是掌握大局。比如，我看代码的文件和结构都是非常好的，功能 API 也是我认可的，但是更细粒度的 API 和业务流程，则可以放心给 AI 去设计和执行。</p>
+<p>也许你会问，细节我都不管了，那万一我需要自己改呢？我自己需要找代码细节呢？或者，我怎么知道 AI 做没做对呢？</p>
+<p>这就要提到新模型的另一个提升：<strong>写测试能力</strong>。这里的测试分两种，因为现在我们不用手写代码，省下来的时间除了梳理业务和制订规划，就是可以去做测试了，测试时可以把人工测试的逻辑录制下来，进行 UI 测试重放，也可以把测试出来的问题，要求 AI 来写成测试。在重构时，我们可以要求 AI 把代码都写成可测试的 API，拆开有副作用的部分，或者加上 mock，这些都非常便利。有了测试，不管是上新功能，还是大规模重构，就都不怕了。</p>
+<p>至于自己改，其实大部分时候都不需要自己改。当然，如果你心疼 token，或者在做一些细节的微调的时候，可以让 AI 把参数给你标记出来，然后手动去调整即可。而要找代码细节那就简单了，因为 AI 把整个代码库都做了语义索引，即便是非常复杂的一坨大代码，也可以很快找到所需要的细节。</p>
+<p>这个范式的改变影响是深远的。<strong>AI 不再是一个能力变换不定的结对同伴，而是变成了一个永不停歇的没有感情需求的牛马。</strong> 这时候，任谁都像拿起鞭子给它疯狂驱使。这就必然引发出一个新的问题：怎么让牛马跑得更快？</p>
+<p>现在的情况是，因为 AI 编程这么可靠，大家都想让它永不停歇地转起来。</p>
+<ul>
+<li>早上起来刷牙，做一个需求规划。</li>
+<li>吃早饭，开始做需求。</li>
+<li>吃完需求做完了，开始规划第二个需求。</li>
+<li>到上班的地方了，开始做第二个需求。</li>
+<li>几分钟之后做完了，有些微调，让 AI 去微调，然后自己继续测试。</li>
+<li>反复这个过程，下班前，让 AI 规划把现在的代码重构、美化一下，顺便检查下今天提交的东西有没有问题。</li>
+<li>晚上，吃饭，继续让它写。</li>
+<li>看电视，继续让它写。</li>
+<li>锻炼身体，继续让它写。</li>
+<li>洗澡，继续让它写。</li>
+<li>睡觉，继续让它写。</li>
+</ul>
+<p>整个过程是如此的快，甚至快到产品 Backlog 里面的需求都很快就刷完了。程序员也体验到了产品的痛苦——接下来做啥呢？好，这时候可以开始探索各种不同的设计，不同的新功能，开始畅想接下来一百个版本的需求…</p>
+<p>不过，其实还可以更快不是吗。我们睡觉的时候，为什么 AI 就要休息呢，它可以继续干。所以，我们看到很多 AI 工具提供了对 Git 的集成，可以把代码拉到云端，在云端去执行修改，人完全可以不管，只看结果。</p>
+<p>当然，这还不够极致，还可以更快，因为我们的应用都是分模块的（AI 帮忙分好的），然后不同模块完全是可以并发的！相当于我们就有了一个 AI 的开发团队，每个都负责一块业务。所以，我们又看到很多 AI 工具提供了对 Git worktree 的集成，也就是自动拉一份代码拷贝，专门实现某个需求，然后最后再 Merge 回你的主代码。这样，10 个模块的需求全部就可以并发了，更快了！什么，Merge 遇到冲突了？没关系，还是让 AI 给你解决冲突就行了。</p>
+<p>这其实就是我们今天面对的全新局面。</p>
+<p>可能也有一些声音：</p>
+<ul>
+<li><strong>AI 根本写不了优秀的代码，最优秀的代码还是得老师傅来写。</strong> 先不说优秀怎么判断，也许是，最极致的代码可能还是要人来雕琢，但是我们今天做的东西，真的需要那么极致的吗？代码现在越来越像是一种消耗品，业务不停变化，代码也不停被更新和丢弃，更快速的能做出来一个可用、好用的产品，其实远比代码本身的雕琢更加可贵。当然，对于底层的库，或者需要极端优化的东西来说，也许 AI 永远只是辅助，但对于绝大部分场景来说，AI 都已经超出预期。</li>
+<li><strong>AI 的设计能力永远有问题，写出来的东西也不具备维护性。</strong> 说实话，一开始我并不是一个看好 AI 的人，我也是这个看法并且不接受反驳，但是现在看到 AI 写的代码总是可以流畅运行时，并且也可以做很好的重构时，我的看法有了很大的改变。它可能永远不是最完美精致的，但是平衡性已经做得非常好，对于绝大部分场景来说，也是完全够用的。维护性其实对于上下文窗口极大的模型来说，其实也不是问题，因为代码的定位，逻辑梳理都可以很容易进行。甚至因为可以不辞辛劳地写测试，甚至把烂代码复兴也成为了可能。</li>
+</ul>
+<p>说实话，当我们在说 AI 的设计和代码烂的时候，其实也应该反观一下人类程序员写的代码。其实如果你参与过大型开发项目，甚至开源项目，就会知道，人写烂代码和做烂设计决策的能力，那其实也是超乎想象的。很多工具和库，能工作，几乎也是一种奇迹。我们现在看到的很多关于代码优美，设计精致的文章，引用的其实也都是古早时期的小型代码，真正很多人参与的项目，很多人染指的代码，基本都是五彩斑斓的黑，各种问题和缺陷也层出不穷。所以，也许我们应该换个层面来看待这个问题，时代可能真的变了。</p>
+<h2 id="_4">总结<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>在最后，除了我自己感受到的变化之外，我还想分享一个案例。我的一个客户，因为自己有需求，所以通过 AI 编程，把一个开源软件，从单租户版，改造成了多租户版，增加了 SSO、权限、租户管理、统计等等功能。仅仅 3-5 个人的团队，一个多月，就把这个事情给做了。现在甚至还在考虑把这个商业化，要准备上 AWS Marketplace 去销售了。刚开始他们有这个想法的时候，我还只是付之一笑。现在看来，其实这个事情并非天方夜谭，至少并不如想象的那么困难。</p>
+<blockquote>
+<p>在这个新时代揭幕，我留下这样一篇思考，希望能对所谓仅存的「人类最后一批开发者」一些帮助。</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

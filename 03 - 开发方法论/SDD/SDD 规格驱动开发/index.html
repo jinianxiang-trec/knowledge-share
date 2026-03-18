@@ -1,0 +1,2192 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI 驱动开发 · 开发方法论 · 工具与实践">
+      
+      
+      
+        <link rel="canonical" href="https://jinianxiang-trec.github.io/knowledge-share/03%20-%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/SDD/SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/">
+      
+      
+        <link rel="prev" href="../../_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/">
+      
+      
+        <link rel="next" href="../Spec-as-source%20%E7%9A%84%E7%90%86%E6%83%B3%E4%B8%8E%E7%8E%B0%E5%AE%9E/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>SDD 规格驱动开发 - 共享知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sdd" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="共享知识库" class="md-header__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            共享知识库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SDD 规格驱动开发
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-tabs__link">
+          
+  
+  
+  行业变化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-tabs__link">
+          
+  
+  
+  AI 驱动开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-tabs__link">
+          
+  
+  
+  开发方法论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-tabs__link">
+          
+  
+  
+  工具与实践
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="共享知识库" class="md-nav__button md-logo" aria-label="共享知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    共享知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行业变化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    行业变化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/_MOC%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/2025AI%E7%BC%96%E7%A8%8B%E5%85%A8%E6%99%AF%E5%9B%9E%E9%A1%BE%E4%B8%8E2026%E8%B6%8B%E5%8A%BF%E9%A2%84%E5%88%A4%20-%20%E8%B6%85%E8%B6%8A%E6%8A%80%E6%9C%AF%E8%A7%86%E8%A7%92%E7%9A%84%E4%BA%A7%E4%B8%9A%E8%8C%83%E5%BC%8F%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025 全景回顾 + 2026 趋势预判
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/AI%E8%B5%B0%E5%88%B0%E5%93%AA%E5%84%BF%E4%BA%86%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A4%B1%E4%B8%9A%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 走到哪儿了：程序员失业倒计时？
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/%E6%B5%85%E8%B0%88%20AI%20%E7%BC%96%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95%E5%92%8C%E6%9C%AA%E6%9D%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    浅谈 AI 编程的发展和未来
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01%20-%20%E8%A1%8C%E4%B8%9A%E5%8F%98%E5%8C%96/AI%E5%AF%B9%E8%BD%AF%E4%BB%B6%E8%A1%8C%E4%B8%9A%E7%9A%84%E5%86%B2%E5%87%BB%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 对软件行业的冲击的思考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/_MOC%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20Agent%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%9A%84%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9A%E4%BB%8E%E5%9F%BA%E4%BA%8E%E6%8C%87%E4%BB%A4%E7%9A%84%E5%BC%80%E5%8F%91%E8%BF%88%E5%90%91%E4%B8%8B%E4%B8%80%E6%AD%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Agent 前沿：从指令到多 Agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%20%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F%E6%BC%94%E8%BF%9B%EF%BC%9A%E4%BB%8E%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8%E5%88%B0%20Vibe%20Coding%E3%80%81Spec%20Coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 编程范式演进
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/AI%E7%BC%96%E7%A8%8B%E6%9C%80%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A2026%E5%BC%80%E5%8F%91%E5%85%A8%E9%93%BE%E8%B7%AF%E9%87%8D%E6%9E%84%EF%BC%8C%E7%9C%8B%E4%B8%8B%E4%BD%A0%E7%9A%84%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%98%AF%E5%90%A6%E6%9C%89%E4%BB%A3%E5%B7%AE%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026 开发全链路重构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02%20-%20AI%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/%E5%85%B3%E4%BA%8E%E6%94%AF%E6%92%91%20AI%20Agent%20%E5%BC%80%E5%8F%91%E7%9A%84%E6%96%87%E6%A1%A3%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    支撑 AI Agent 的文档设计
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发方法论
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发方法论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../_MOC%20%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 规格驱动开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SDD 规格驱动开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 入门
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 入门
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vibe Coding 的甜蜜与危险
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD 是什么？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SDD 是什么？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sdd_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD 的三个阶段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ears" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EARS 让需求变得可执行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdd_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD 的三个层级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具比较
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdd_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD 不是万能药
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdd_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么情况适合用 SDD？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spec-as-source%20%E7%9A%84%E7%90%86%E6%83%B3%E4%B8%8E%E7%8E%B0%E5%AE%9E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-as-source 的理想与现实
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDD%20%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91_PPT%E5%88%86%E4%BA%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD PPT 分享
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vibe%20Coding%E5%B7%B2%E7%BB%8F%E6%98%AF%E8%BF%87%E5%8E%BB%E5%BC%8F%E4%BA%86%EF%BC%9ASpec%20Driven%20Development%EF%BC%88SDD%EF%BC%89%20%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibe Coding 到 SDD 指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9AAI%20%E5%8E%9F%E7%94%9F%E5%BC%80%E5%8F%91%E7%9A%84%E4%BA%94%E4%B8%AA%E8%A7%89%E9%86%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 原生开发的五个觉醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%8E%20Vibe%20Coding%20%E5%88%B0%20Spec-Driven%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%8E%20AI%20%E5%8D%8F%E4%BD%9C%E4%B8%A4%E5%B9%B4%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E7%A0%B4%E5%B1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    两年思考与破局
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SDD%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E6%96%B0%E8%8C%83%E5%BC%8F%EF%BC%9A%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E6%9C%AA%E6%9D%A5%E5%8F%98%E9%9D%A9%E4%B8%8E%E8%90%BD%E5%9C%B0%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDD 新范式：落地实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%EF%BC%88SDD%EF%BC%89%EF%BC%9A%E7%94%A8%20AI%20%E5%86%99%E7%94%9F%E4%BA%A7%E7%BA%A7%E4%BB%A3%E7%A0%81%E7%9A%84%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用 AI 写生产级代码
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Harness Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Harness-Engineering%20%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%EF%BC%9A%E5%9C%A8%E6%99%BA%E8%83%BD%E4%BD%93%E4%BC%98%E5%85%88%E7%9A%84%E4%B8%96%E7%95%8C%E4%B8%AD%E5%88%A9%E7%94%A8%20Codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在智能体优先的世界中利用 Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具与实践
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工具与实践
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/_MOC%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Claude Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Claude%20Code/Claude%20Code%20Skills%EF%BC%9A%E8%AE%A9%20AI%20%E5%8F%98%E8%BA%AB%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%8C%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code Skills
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Claude%20Code/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Antigravity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Antigravity/Antigravity%20%E8%A7%84%E6%A0%BC%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antigravity 规格开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Antigravity/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codex
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%AE%9E%E8%B7%B5/Codex/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    官方文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vibe Coding 的甜蜜与危险
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD 是什么？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SDD 是什么？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sdd_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD 的三个阶段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ears" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EARS 让需求变得可执行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdd_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD 的三个层级
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具比较
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdd_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD 不是万能药
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdd_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么情况适合用 SDD？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sdd"><strong>SDD 规格驱动开发</strong><a class="headerlink" href="#sdd" title="Permanent link">&para;</a></h1>
+<p>当我们对 AI 说：“帮我做一个登录功能”，AI 花了几分钟产出一堆代码，最后很有信心地说：“完成了！这个功能已经可以使用了，完美！”</p>
+<p>打开看一下，好像有登录表单、有验证逻辑、有错误处理，而且设计看起来十分专业。结果实际试一下，发现登录成功后没有跳转页面。怎么办？没关系，我们可以再跟 AI 说：“登录成功后要跳转到首页。”，AI 很快修好了，但这次忘记处理密码错误的情况。再继续修，它又改坏了另一个地方。就这样来来回回，原本以为十分钟能搞定的功能，搞了两个小时。</p>
+<p>更惨的是，最后拿到的代码可能跟我们的预期架构完全不同。AI 用了我们从来没见过的包，写了一堆看不懂的抽象层。最后可能确实能运行，但你完全不知道它在干什么，也不知道以后怎么维护。</p>
+<p>这不是你的问题，也不是 AI 的问题，这是方法论的问题。</p>
+<h2 id="vibe-coding"><strong>Vibe Coding 的甜蜜与危险</strong><a class="headerlink" href="#vibe-coding" title="Permanent link">&para;</a></h2>
+<p>2025 年初，Andrej Karpathy 提出 Vibe Coding 的概念，就是“凭感觉写代码”，我们好像不用真的懂代码在干什么，只要跟 AI 聊天、许愿，它就会帮我们把东西做出来。做出来的东西有问题或是不喜欢？没关系，再继续跟 AI 聊天、许愿，它就会调整，整个过程就像在跟一个很厉害又超级有耐心的同事聊天，聊着聊着代码就写完了。</p>
+<p>Vibe Coding 在某些场景下非常有效，例如想快速做个 POC 验证想法？没问题。想写个小工具自己用？完全可以。在探索一个新技术，不确定要怎么用？Vibe Coding 能让我们很快地摸到感觉。但当项目变大、需求变复杂或是团队成员变多的时候，Vibe Coding 的问题就会浮现。这也是 Vibe Coding 这个词最近好像已经变成一种嘲讽或是反面教材的原因之一。Vibe Coding 虽然很好玩，但可能会遇到一些问题...</p>
+<p>第一个问题是 AI 产出的代码风格不一致。今天早上请它写会员登录功能，下午让它写购物车，明天再来一个订单管理功能，AI 可能会用三种完全不同的方法和架构。整个项目看起来像是三个不同的人写的，因为它确实是三次不同的对话产出的结果。</p>
+<p>第二个问题是 AI 可能不会主动告诉你它漏掉了什么。我们跟 AI 说要登录功能，它就做登录功能，但它不一定会问“登录失败要怎么处理？”、“密码有什么格式限制？”、“要不要实现‘记住我’的功能？”。这些细节没跟 AI 讲，AI 可能就不会做，或者反过来没讲但做了你目前可能还不需要的功能。等你发现的时候，已经写了一堆代码，要回头改就很痛苦，说不定整个砍掉再重来一次还比较快。</p>
+<p>第三个问题是最麻烦的，就是 AI 很会说“我完成了”。Amazon Kiro 的首席工程师 Al Harris 在 2025 年的一场演讲中讲得很直白，他说 AI 很擅长说“我做完了，我很满意，你应该也很满意”之类的话。但实际上测试没通过、逻辑有漏洞、边界条件没处理，它都会轻描淡写地带过。“哦对，测试没通过，但那个测试很烦，我试了三次都不行，就先跳过了。”</p>
+<p>这不是 AI 在骗你，这是 LLM 本质上的问题。LLM 擅长模式识别和文字生成，但不擅长理解我们心里真正想要什么。给它一个模糊的指令，它就会用“最常见”的模式来填补那些模糊的空间。问题是，我们的需求往往不是最常见的那种。</p>
+<p>于是有人开始想有没有什么方法可以让 AI 更可靠一点？“规格驱动开发（Spec-Driven Development）”，也就是大家最近常听到的 SDD 就是其中一个答案。</p>
+<h2 id="sdd_1"><strong>SDD 是什么？</strong><a class="headerlink" href="#sdd_1" title="Permanent link">&para;</a></h2>
+<p>大家别误会，不要以为 SDD 是什么新的发明。“先写规格再写代码”这个概念早就存在了，瀑布式开发时代就已经在做这件事，TDD、BDD 这些方法论也都强调“先定义预期结果，再写实现”的精神。这些做法在 AI Coding 兴起之后经历了一次复兴，加上一些 KOL 的推广或刻意炒作，SDD 突然就这样红了起来。</p>
+<p>SDD 的核心想法其实不复杂，就是在写代码之前，先把规格写清楚。但这并不是要我们写一份冗长的规格文档然后丢给 AI，而是先把规格变成 AI 和人类之间的共同语言，一个可以持续演进的共识基础。根据 Amazon Kiro 团队的定义，SDD 的工作流程分成三个阶段，每个阶段都有对应的文档。</p>
+<p>第一个是 Requirements，把需求写成“用户故事（User Story）”的格式，附上明确的“验收标准（Acceptance Criteria）”，放在 requirements.md 里。<br />
+第二个是 Design，产出技术设计文档，包含架构图、数据模型等，放在 design.md 里。<br />
+第三个是 Tasks，把工作拆成一个一个可追踪的小任务，放在 tasks.md 里。<br />
+这三份文档会随着项目演进而更新，而且规格跟代码要保持同步。</p>
+<p>换句话说，SDD 试图解决的问题是当我们跟 AI 许愿“做一个登录功能”的时候，要怎么保证我们跟 AI 对于“登录功能”的理解是一致的，或者如何确保最后产出的代码真的做到了我们想要的事情。来细看 SDD 的三个阶段...</p>
+<h3 id="sdd_2"><strong>SDD 的三个阶段</strong><a class="headerlink" href="#sdd_2" title="Permanent link">&para;</a></h3>
+<p><strong>第一阶段 Requirements</strong><br />
+需求阶段。这个阶段的目标是把你脑袋里模糊的想法变成清晰的、可被验证的需求。这不只是简单写一句“要有登录功能”就好了，而是要写成用户故事的格式，然后附上具体的验收标准。例如：</p>
+<p>作为一个用户，我希望能够用邮箱和密码登录，这样我就能访问我的个人资料。</p>
+<p>这是用户故事，遵循“作为《角色》，我希望《功能》，这样我就能《好处》”的格式。然后验收标准可能会写成：</p>
+<ul>
+<li>“当用户输入正确的邮箱和密码的时候，系统应该将用户导向首页。”</li>
+<li>“当密码错误超过三次的时候，系统应该锁定账号三十分钟。”<br />
+    这种“当...的时候，系统应该...”的写法其实就是下面会介绍的 EARS 格式。如果各位有写过 BDD 测试，可能会觉得这跟 Given、When、Then 的写法很像。两者的概念确实相近，只是 EARS 省略了 Given（前提条件），直接从触发条件开始描述。在这个阶段结束的时候，我们和 AI 对于“什么叫做完成”应该有一致的理解。</li>
+</ul>
+<p><strong>第二阶段是 Design</strong><br />
+设计阶段。有了清晰且一致的需求之后，接着由 AI 帮忙产出一份技术设计文档。这份文档会包括系统架构图、数据流程、数据模型、错误处理策略、测试策略等等。</p>
+<p>设计阶段的重点是让我们有机会在写代码之前就发现问题。比如说，你可能会发现某两个需求是冲突的，或是某个技术选择会让后续的扩展变得困难。这些问题在设计阶段发现，修改成本很低。如果等到代码都写完了才发现，那就有点痛苦了。在这个阶段，我们可以要求 AI 加入线框草图，不需要用 Photoshop 或 Figma 这种专业的软件画，用 ASCII 画出大概的界面就行了。这样就能在写代码之前就确认界面的设计是我们想要的。如果不是，现在改规格很简单，总比等代码写完再改容易太多了。</p>
+<p><strong>第三阶段 Tasks</strong><br />
+任务阶段。在这个阶段，根据需求和设计，把工作拆成一个一个的小任务，每个任务同样都有明确的目标和验收标准，而且会追溯到最初的需求编号。</p>
+<p>任务的“粒度（granularity）”很重要，不过这没有一定要切多大多小的标准答案。一般来说每个任务应该要足够小，小到“你”可以在一个合理的时间内完成并验证。为什么我特别标记“你”？因为每个人的经验能力不同，对任务大小的感受也会不同。你可以根据自己的经验来调整任务的大小，确保每个任务都是你能够掌握的范围。</p>
+<p>这样做的好处是，如果某个任务出了问题我们很快就能发现，而且修复的范围是有限的。不会像 Vibe Coding 那样，做到一半才发现整个架构都错了，要全部重来。</p>
+<h3 id="ears"><strong>EARS 让需求变得可执行</strong><a class="headerlink" href="#ears" title="Permanent link">&para;</a></h3>
+<p>刚才提到 EARS 格式，这是 SDD 里面一个很重要的概念。EARS 的全名是 Easy Approach to Requirements Syntax，翻译成中文大概是“需求语法的简易方法”。这个格式是 Alistair Mavin 和 Rolls-Royce 团队在 2009 年提出的，最初是为了分析喷气发动机控制系统的适航法规。他们发现需求最容易阅读的方式，是让各个子句永远按照固定顺序出现，然后逐渐精炼成这套格式。后来被空客、NASA、西门子等公司采用，也被很多大学纳入教材。</p>
+<p>EARS 的核心是用“应”（shall）搭配固定顺序的条款（例如 当...应...），必要时用“则”（Then）拆出结果，以结果来说它是人类可以读懂的文本，又有足够的结构让机器可以解析。</p>
+<p>举个例子：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>当用户输入正确的邮箱和密码时
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>则系统应将用户重定向到首页
+</code></pre></div>
+<p>这个需求很清楚地说明了触发条件（输入正确的账号密码）和预期行为（跳转到首页）。没有模糊空间，没有需要猜测的地方。EARS 格式的好处有几个：</p>
+<p>首先它强迫我们把需求想清楚。我们不能再写“登录要顺畅”这种模糊的东西，必须明确定义什么情况下应该发生什么事。</p>
+<p>其次它让需求更容易被测试。因为需求被写成明确的触发条件与预期结果，我们更容易把它们整理成测试用例，进而验证行为是否符合规格。</p>
+<p>最后它减少了 AI 的猜测空间。当使用结构化的语言描述需求，AI 就不需要去猜到底想要什么。它可以直接根据需求来生成代码，而且生成的结果更可预测。</p>
+<h3 id="sdd_3"><span style="color: rgb(132, 63, 161);">SDD 的三个层级</span><a class="headerlink" href="#sdd_3" title="Permanent link">&para;</a></h3>
+<p>如果你去看目前市面上的几种 SDD 工具，你会发现它们对“Spec”的使用方式不太一样。在 Martin Fowler 团队的文章里提到可以把 SDD 分成三个层级：</p>
+<p><strong>第一层是 Spec-first，规格优先。</strong><br />
+这是最基本的 SDD 做法，就是在写代码之前先写好规格，然后用规格来引导 AI 生成代码。当这个任务完成之后，规格可能就被丢掉了，下次有新任务再写新的规格。大部分的 SDD 工具都至少支持 Spec-first，这已经比 Vibe Coding 好很多了，因为你至少有一份文档记录你当初想要什么。</p>
+<p><strong>第二层是 Spec-anchored，规格锚定。</strong><br />
+这个层级的做法是把规格保留下来而且还加进版本控制里，让它随着项目演进而更新，而且团队成员手上都有一份。当要修改功能的时候，我们不是直接去改代码，而是先改规格，然后让代码跟着规格走。Spec-anchored 的好处是永远有一份文档知道系统应该做什么。这对团队协作特别有帮助，因为新来的人可以先看规格，就能理解系统的设计意图，而不是只能从代码去猜测。</p>
+<p><strong>第三层是 Spec-as-source，规格即源代码。</strong><br />
+这是最激进的等级，我们根本不直接编辑代码，只编辑规格。代码完全由规格自动生成，甚至会在文件开头加上“从规格生成 - 请勿编辑”这样的警告。</p>
+<p>对原本就会写代码的工程师来说，Spec-as-source 听起来有点梦幻，但它的逻辑其实很清楚。如果我们相信“规格是真相的来源”，那为什么还要让人去碰代码呢？让代码完全由规格生成，就能确保两者永远一致。</p>
+<p>目前大部分的工具还是停留在 Spec-first 或 Spec-anchored 的阶段。Spec-as-source 还在实验阶段，这对规格的撰写能力要求很高，因为我们得要把规格写得非常非常精确，才能确保生成的代码是正确的。</p>
+<h3 id="_1"><strong>工具比较</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>市面上已经有几个工具在做 SDD 相关的事情。让我们来看看几个比较有代表性的工具。</p>
+<p><span style="color: rgb(186, 55, 42);">Kiro</span> 
+Amazon Kiro 是从 VS Code 项目 fork 出来的，由 Amazon 团队开发。它的工作流程是 Requirements → Design → Tasks，三个阶段都有对应的 Markdown 文件。Kiro 的特色是它使用 EARS 格式来撰写需求，而且支持基于属性的测试，可以自动验证代码是否符合需求。</p>
+<p>Kiro 还有一个叫做 Hooks 的功能，可以在文件变更的时候自动触发某些动作。比如说，你可以设定一个 Hook，让每次 CSS 文件变更的时候，自动检查它是否符合 Figma 设计稿。这对维护设计一致性很有帮助。</p>
+<p><span style="color: rgb(186, 55, 42);">Spec Kit</span><br />
+Spec Kit 是 GitHub 推出的开源工具，可以搭配 GitHub Copilot、Claude Code、Gemini CLI 等各种 AI Coding 工具一起使用。它的工作流程是 Constitution → Specify → Plan → Tasks，多了一个 Constitution 的概念，用来定义团队的基本原则和约束。</p>
+<p>Spec Kit 的特色是高度可定制化。因为所有的东西都是放在项目目录里，我们可以自己修改模板、调整流程、加入额外的检查点。这对有特殊需求的团队来说很有弹性。不过根据 Martin Fowler 团队的观察，Spec Kit 目前还是偏向 Spec-first 层级，对于 Spec-anchored 的支持还不是很明确。每次建立规格都会开一个新的分支，这暗示他们把规格视为某次变更的产物，而不是功能的长期文档。</p>
+<p><span style="color: rgb(186, 55, 42);">Tessl Framework</span> 
+Tessl Framework 这个我还没认真用过，不过从文档看起来它的愿景很有趣。Tessl 明确追求 Spec-as-source 的层级，希望让规格变成唯一需要维护的东西，代码完全由规格生成。</p>
+<p>Tessl 的 Framework 会帮我们建立三种东西：Plans（行动计划）、Specs（意图描述）、Tests（验证测试）。除了 Framework 之外，他们还提供一个免费的 Spec Registry，里面有超过一万个开源软件库的 usage specs。这些 usage specs 的用途是帮助 AI 代理正确使用库的 API，避免产生不存在的方法或版本混淆的问题。</p>
+<p>Martin Fowler 团队在试用 Tessl 的时候发现，因为 LLM 的非确定性，同样的规格多次生成可能会产出不同的代码。这意味着你需要把规格写得非常精确，才能确保每次生成的结果是一致的。Spec-as-source 是一个有趣的挑战，也让我们可以好好思考一下“什么是足够好的规格”。</p>
+<p><span style="color: rgb(186, 55, 42);"><strong>OpenSpec</strong></span><br />
+最后要介绍的是 OpenSpec，这是一个开源的轻量级工具。如果你觉得 Spec Kit 的流程太重，像是为了拧一颗螺丝要写十几页文档，OpenSpec 可能更适合你。</p>
+<p>OpenSpec 的设计理念是 Brownfield-first，也就是说它不只适合从零开始的新项目，更适合在现有系统上做修改。它把“真相的来源”和“变更提案”分开管理：<code>openspec/specs/</code> 存放目前系统应该长什么样子，<code>openspec/changes/</code> 存放你想要做的变更。这样的分离让你可以清楚看到每次变更的范围，也让多人协作的时候不会互相干扰。</p>
+<blockquote>
+<p><strong>冷知识</strong><br />
+软件圈常用 Greenfield 和 Brownfield 来区分“全新项目”和“既有系统”这两种情境，这个比喻来自土地开发或环境工程。Greenfield 指的是未开发的绿地，可以从零开始建；而 Brownfield 是已开发过的棕地，可能有旧工厂要拆、土地被污染过，得先处理既有的东西才能动工。</p>
+</blockquote>
+<p>工作流程很简单，先写一个提案说明你想做什么，跟 AI 讨论到双方都同意，然后就开始应用实现，做完之后就归档，把变更合并回 specs。整个过程不需要 API 密钥，所有东西都是 Markdown 文件，就放在项目目录里。</p>
+<p>OpenSpec 支持的工具很多，Claude Code、Cursor、GitHub Copilot、Windsurf、Gemini CLI 等主流的 AI coding 工具都有支持。我目前主要的开发都是用 Claude Code 搭配 OpenSpec，用起来挺开心的，我也写了一篇文章分享心得，有兴趣可试用看看再跟我说用的手感如何。</p>
+<h3 id="sdd_4"><strong>SDD 不是万能药</strong><a class="headerlink" href="#sdd_4" title="Permanent link">&para;</a></h3>
+<p>讲了这么多 SDD 的好处，我们也要诚实面对它的局限性...</p>
+<p>第一个问题是 <strong>SDD 会让开发速度变慢</strong>。有开发者在 Hacker News 上分享他用 Kiro 的经验。他想做一个很简单的工具，显示 macOS 的全局键盘快捷键。他给了 Kiro 一份简短的规格和一些 TypeScript 的 schema，结果 Kiro 写了大概 5,000 行代码，包含测试。代码可以跑，测试也都有通过，但 5,000 行对这么简单的任务来说太夸张了。他后来手动把它缩减到 800 行，功能都没少。</p>
+<p>这说明 SDD 适合有一定复杂度的项目。如果你只是要做一个小工具，直接 Vibe Coding 可能更有效率。</p>
+<p>第二个问题是 <strong>SDD 会改变工程师的角色</strong>。有开发者说，用 SDD 开发流程的感觉不像在写代码，反而比较像在当产品经理。会变成花很多时间在定义需求、审核设计、验收结果，真正写代码的时间反而变少了，甚至没有什么代码是自己写的，感觉像是在监工 AI 的工作。</p>
+<p>这对有些人来说是好事，对有些人来说是坏事。像我原本是很享受写代码的过程，SDD 就让我觉得好像少了什么。但如果各位更在意的是把事情做好，SDD 确实能帮我们更可靠地达成目标。</p>
+<p>第三个问题是 <strong>要做好 SDD 需要学习新的技能</strong>。写好规格不是一件容易的事，这跟写代码一样需要训练。我们可能得学会用像是 EARS 格式之类的写法、学会怎么把模糊的需求变成清晰的验收标准、学会怎么设计可测试的系统。这些技能跟写代码不太一样，但都需要时间训练。</p>
+<p>第四个问题是 <strong>工具还在快速演进中</strong>。Kiro、Spec Kit、Tessl 或是 OpenSpec 这几套工具对 SDD 的实现方式跟愿景都不太一样，也许下个月又会冒出新的工具、新的方法论。现在投入大量时间学习某个特定工具，不能保证这个投资会有长期回报。不过这点我倒不是很在意，因为 SDD 的核心概念是“先写规格再写代码”，这个概念不会变，而且我本来就有 TDD/BDD 的开发习惯，这对我来说没什么太大的影响。工具只是帮助我们实践这个概念的手段，学会了 SDD 的思维方式，就算之后再换其它工具也不会太困难。</p>
+<h3 id="sdd_5"><strong>什么情况适合用 SDD？</strong><a class="headerlink" href="#sdd_5" title="Permanent link">&para;</a></h3>
+<p>根据 Spec Kit 的文档，SDD 适合三种开发阶段：</p>
+<p>第一种是 <strong>全新项目（0-to-1 Development）</strong>，从零开始建立一个系统。这时候花时间写规格是值得的，因为你有机会在最一开始就把事情想清楚，避免后面付出更大的代价去修正错误的设计决策。</p>
+<p>第二种是 <strong>探索性开发（Creative Exploration）</strong>，尝试不同的实现方式。当你不确定要用什么技术、什么架构的时候，可以用 SDD 的方法同时探索多种可能性。因为规格是跟实现分开的，你可以用同一份规格去尝试不同的技术组合，看哪个最适合。</p>
+<p>第三种是 <strong>渐进式改进（Iterative Enhancement）</strong>，在现有的代码上工作。这包括新增功能和旧系统现代化，可能也是 SDD 最能发挥价值的场景。现有系统通常有很多隐藏的约束和假设，如果你直接让 AI 去改代码，很容易改坏其他地方。先写规格、厘清新功能如何与现有系统互动，能大幅降低出错的概率。</p>
+<p>再以 OpenSpec 为例，specs 和 changes 的分离设计就是针对既有系统这个痛点。specs 文件夹告诉 AI“这些是已经存在的规格，你不能乱动”，changes 文件夹则是“这次想做的变更”。更关键的是提案阶段强迫你先想清楚“这次变更会影响什么”，列出受影响的 specs 和受影响的代码。这个动作本身就是在厘清边界，如果你自己都列不出来，AI 更不可能知道。</p>
+<p>不过既有系统有个前提，就是你得先有 specs 才可以锚定。如果现有系统本来就没有规格文档，你得先花时间把现有行为记录下来，这是导入成本。很多公司现有的项目都是“代码就是文档”的状态，要回头补 specs 需要一点技术和意志力。比较务实的做法是渐进式导入，先从新功能开始建立 specs，慢慢积累，而不是一开始就想把整个系统的规格都补齐。</p>
+<h3 id="_2"><strong>小结</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>回到文章一开始的那个问题，当 AI 说“完成了”，你怎么知道它真的完成了？我想答案应该是：</p>
+<p><strong>在开始之前，先定义什么叫“完成”。</strong></p>
+<p>这听起来很简单，但做起来不容易。这需要我们改变工作方式，从“边做边想”变成“想清楚再做”；这需要学习新的技能，把模糊的想法变成清晰的规格；这还需要接受前期导入会多花一些时间的事实，不过别担心，这些时间会在后期慢慢赚回来。</p>
+<p>如果你现在主要是用 AI 来做小项目、写 POC、或是探索新技术，Vibe Coding 可能还是最有效率的方法。享受那个快速迭代、即时反馈的感觉。但如果你开始做更大的项目、跟团队协作、或是需要长期维护的系统，我会建议试试看 SDD。不一定要用特定的工具，光是养成“先写规格再写代码”的习惯，就能让你跟 AI 的协作品质提升很多。贴心小提醒，选择工具之前，一定要先确定目前自己的情况，不要别人说什么好用就跟风用...</p>
+<p>SDD 不是要取代 AI，而是要<strong>让 AI 的产出更可控、更符合我们的期待</strong>，也就是说，与其完全相信 AI 说“我做完了”，不如用更明确的规格和自动化测试来把关。通过结构化的文档描述需求、明确的验收标准以及自动化的验证，我们希望可以把 AI 变成一个可以信任的协作伙伴。</p>
+<p>下次 AI 再跟你说“完成了”的时候，也许可以反问它一句“<strong>完成了什么？</strong>” :)</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
